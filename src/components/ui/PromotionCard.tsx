@@ -14,7 +14,7 @@ export function PromotionCard({ promo, onClaimClick }: PromotionCardProps) {
 
   return (
     <div
-      className="group rounded-3xl p-6 sm:p-7 flex flex-col justify-between relative h-full bg-white text-navy-900 border border-slate-100 shadow-md hover:bg-navy-900 hover:text-white hover:border-navy-800 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+      className="group rounded-3xl p-6 sm:p-7 flex flex-col justify-between relative h-full bg-navy-900 text-white border border-navy-800/80 shadow-xl hover:shadow-2xl hover:border-brand-400/50 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
       onClick={() => onClaimClick(promo.title)}
     >
       {/* Top Best Value Ribbon */}
@@ -25,39 +25,39 @@ export function PromotionCard({ promo, onClaimClick }: PromotionCardProps) {
       )}
 
       <div>
-        {/* Top Save More pill for featured offer */}
+        {/* Top Save More pill */}
         {isBestValue && (
-          <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-500 bg-brand-50 group-hover:bg-brand-500/20 group-hover:text-brand-300 px-2.5 py-0.5 rounded-full border border-brand-200 group-hover:border-brand-400/30 inline-flex items-center gap-1 mb-3 transition-colors">
-            <Sparkles className="w-3 h-3" /> Save more
+          <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-300 bg-brand-500/20 px-2.5 py-0.5 rounded-full border border-brand-400/30 inline-flex items-center gap-1 mb-3">
+            <Sparkles className="w-3 h-3 text-brand-400" /> Save more
           </span>
         )}
 
-        {/* Big Price Tag */}
+        {/* Big Cyan Price Tag */}
         <div className="mb-2">
-          <span className="text-3xl font-black block leading-tight text-brand-500 group-hover:text-brand-400 transition-colors">
+          <span className="text-3xl font-black block leading-tight text-brand-400">
             {promo.price}
           </span>
-          <span className="text-xs font-bold block mt-0.5 text-navy-900 group-hover:text-white transition-colors">
+          <span className="text-xs font-bold block mt-0.5 text-white">
             {promo.title}
           </span>
-          <span className="text-[11px] font-semibold line-through block mt-0.5 text-slate-400 group-hover:text-slate-400 transition-colors">
+          <span className="text-[11px] font-semibold line-through block mt-0.5 text-slate-400">
             {promo.originalPrice}
           </span>
         </div>
 
         {/* Description */}
-        <p className="text-xs leading-relaxed font-medium mb-6 text-slate-500 group-hover:text-slate-300 transition-colors">
+        <p className="text-xs leading-relaxed font-medium mb-6 text-slate-300">
           {promo.description}
         </p>
       </div>
 
-      {/* Pill Button: Light Cyan by default -> Bright Cyan on Card Hover */}
+      {/* Bright Cyan Pill Button */}
       <button
         onClick={(e) => {
           e.stopPropagation();
           onClaimClick(promo.title);
         }}
-        className="w-full py-2.5 px-4 rounded-full font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all bg-brand-50 group-hover:bg-brand-500 text-brand-600 group-hover:text-white border border-brand-200 group-hover:border-brand-400 shadow-sm group-hover:shadow-md cursor-pointer"
+        className="w-full py-2.5 px-4 rounded-full font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all bg-brand-500 hover:bg-brand-400 text-white shadow-md hover:shadow-lg cursor-pointer"
       >
         <span>Claim offer</span>
         <ArrowRight className="w-3.5 h-3.5" />
