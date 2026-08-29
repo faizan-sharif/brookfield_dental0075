@@ -75,16 +75,16 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
       {/* Clean White Main Navigation matching reference screenshot */}
       <nav
         className={`bg-white transition-all duration-300 ${
-          scrolled ? 'shadow-md py-2 border-b border-slate-200' : 'py-3 border-b border-slate-100'
+          scrolled ? 'shadow-md py-2 border-b border-slate-200' : 'py-2.5 border-b border-slate-100'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-          {/* Exact Official Brookfield Dental Associates Emblem Logo */}
-          <Link href="/" className="flex items-center group py-1">
+          {/* Prominent Official Brookfield Dental Associates Emblem Logo */}
+          <Link href="/" className="flex items-center group py-0.5">
             <img
               src="/images/logo.png"
               alt="Brookfield Dental Associates"
-              className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-14 sm:h-16 md:h-18 w-auto object-contain transition-transform group-hover:scale-105"
             />
           </Link>
 
