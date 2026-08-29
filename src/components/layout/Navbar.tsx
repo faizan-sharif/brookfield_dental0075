@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Calendar, Menu, X, ArrowRight, Clock } from 'lucide-react';
@@ -80,17 +79,13 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-          {/* Prominent Official Clinic Logo Image */}
-          <Link href="/" className="flex items-center group py-0.5">
-            <div className="relative w-52 sm:w-64 h-14 sm:h-16">
-              <Image
-                src="/images/logo.png"
-                alt="Brookfield Dental Associates"
-                fill
-                priority
-                className="object-contain object-left mix-blend-multiply group-hover:scale-105 transition-transform"
-              />
-            </div>
+          {/* Exact Official Brookfield Dental Associates Emblem Logo */}
+          <Link href="/" className="flex items-center group py-1">
+            <img
+              src="/images/logo.png"
+              alt="Brookfield Dental Associates"
+              className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+            />
           </Link>
 
           {/* Center Title-Case Nav Links */}

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Phone, Mail, MapPin, Sparkles, Clock, ShieldCheck, Heart, Lock } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 
@@ -18,12 +17,11 @@ export function Footer() {
           {/* Brand Info */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center">
-              <div className="relative w-48 h-12 bg-white p-1 rounded-xl shadow-md">
-                <Image
+              <div className="bg-white p-2 rounded-xl shadow-md inline-block">
+                <img
                   src="/images/logo.png"
                   alt="Brookfield Dental Associates Logo"
-                  fill
-                  className="object-contain p-1"
+                  className="h-12 w-auto object-contain"
                 />
               </div>
             </Link>
