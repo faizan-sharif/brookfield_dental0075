@@ -17,9 +17,9 @@ export function Footer() {
           {/* Brand Info */}
           <div className="space-y-4">
             <Link href="/" className="inline-block group">
-              <div className="bg-white p-3 rounded-2xl shadow-lg border border-slate-100 inline-block hover:shadow-xl transition-all">
+              <div className="bg-navy-900 border border-navy-700/80 p-3 px-4 rounded-2xl shadow-lg inline-block hover:border-brand-400 transition-all">
                 <img
-                  src="/images/logo.png"
+                  src="/images/logo_white_outline.png"
                   alt="Brookfield Dental Associates Logo"
                   className="h-12 w-auto object-contain"
                 />
