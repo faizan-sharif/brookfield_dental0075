@@ -17,11 +17,13 @@ export function Footer() {
           {/* Brand Info */}
           <div className="space-y-4">
             <Link href="/" className="inline-block group">
-              <img
-                src="/images/logo_white.png"
-                alt="Brookfield Dental Associates Logo"
-                className="h-14 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105"
-              />
+              <div className="bg-white p-3 rounded-2xl shadow-lg border border-slate-100 inline-block hover:shadow-xl transition-all">
+                <img
+                  src="/images/logo.png"
+                  alt="Brookfield Dental Associates Logo"
+                  className="h-12 w-auto object-contain"
+                />
+              </div>
             </Link>
 
             <p className="text-xs text-slate-300 leading-relaxed">
