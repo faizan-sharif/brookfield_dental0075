@@ -14,7 +14,7 @@ interface BlogCardProps {
 export function BlogCard({ post }: BlogCardProps) {
   return (
     <Tilt3DCard maxTilt={5} className="h-full rounded-3xl">
-      <div className="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 flex flex-col justify-between h-full group hover:shadow-2xl hover:border-brand-300 transition-all duration-300">
+      <div className="bg-white rounded-3xl overflow-hidden shadow-xl border-2 border-navy-900 flex flex-col justify-between h-full group hover:shadow-2xl hover:border-brand-500 transition-all duration-300">
         <div>
           {/* Article Image Preview */}
           <div className="relative w-full h-40 sm:h-44 overflow-hidden bg-slate-100">
