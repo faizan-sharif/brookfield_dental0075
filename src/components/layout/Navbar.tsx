@@ -25,13 +25,11 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Dental Implants', href: '/implants' },
-    { name: 'About & Team', href: '/about' },
-    { name: 'Special Offers', href: '/promotions' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'Admin Portal', href: '/admin' },
+    { name: 'HOME', href: '/' },
+    { name: 'ABOUT', href: '/about' },
+    { name: 'SERVICES', href: '/services' },
+    { name: 'BLOG', href: '/promotions' },
+    { name: 'CONTACT', href: '/contact' },
   ];
 
   return (
@@ -67,8 +65,8 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
       <nav
         className={`transition-all duration-300 ${
           scrolled
-            ? 'bg-white/90 backdrop-blur-md shadow-md py-3 border-b border-slate-200/80'
-            : 'bg-white/80 backdrop-blur-md py-4 border-b border-slate-200/60'
+            ? 'bg-navy-950/95 text-white backdrop-blur-md shadow-md py-3 border-b border-navy-800'
+            : 'bg-navy-950/90 text-white backdrop-blur-md py-4 border-b border-navy-800/80'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
@@ -78,27 +76,25 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
               <Sparkles className="w-5 h-5 fill-current" />
             </div>
             <div>
-              <span className="text-lg font-black text-navy-900 tracking-tight block leading-none">
+              <span className="text-lg font-black text-white tracking-tight block leading-none">
                 BROOKFIELD
               </span>
-              <span className="text-[10px] font-extrabold text-brand-500 tracking-widest uppercase block mt-0.5">
+              <span className="text-[10px] font-extrabold text-brand-400 tracking-widest uppercase block mt-0.5">
                 Dental Associates
               </span>
             </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1 bg-slate-100/70 p-1.5 rounded-full border border-slate-200/80">
+          {/* Desktop Nav matching reference screenshot */}
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => {
               const active = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${
-                    active
-                      ? 'bg-white text-brand-600 shadow-sm border border-slate-200'
-                      : 'text-slate-700 hover:text-brand-600 hover:bg-white/60'
+                  className={`text-xs font-black tracking-wider uppercase transition-colors hover:text-brand-400 ${
+                    active ? 'text-brand-400 border-b-2 border-brand-400 pb-1' : 'text-white'
                   }`}
                 >
                   {link.name}
@@ -121,7 +117,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
           {/* Mobile Drawer Trigger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl bg-white border border-slate-200 text-navy-900"
+            className="lg:hidden p-2.5 rounded-xl bg-navy-900 border border-navy-800 text-white"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -135,7 +131,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-b border-slate-200 shadow-xl overflow-hidden"
+            className="lg:hidden bg-navy-950 border-b border-navy-800 shadow-xl overflow-hidden"
           >
             <div className="p-4 space-y-2">
               {navLinks.map((link) => (
@@ -143,10 +139,10 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-xl text-sm font-bold transition-colors ${
+                  className={`block px-4 py-3 rounded-xl text-xs font-black uppercase tracking-wider transition-colors ${
                     pathname === link.href
-                      ? 'bg-brand-50 text-brand-600 border border-brand-200'
-                      : 'text-slate-700 hover:bg-slate-50'
+                      ? 'bg-brand-500/20 text-brand-400 border border-brand-400/30'
+                      : 'text-white hover:bg-navy-900'
                   }`}
                 >
                   {link.name}

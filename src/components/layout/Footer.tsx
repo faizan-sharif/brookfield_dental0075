@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Sparkles, Clock, ShieldCheck, Heart } from 'lucide-react';
+import { Phone, Mail, MapPin, Sparkles, Clock, ShieldCheck, Heart, Lock } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 
 export function Footer() {
@@ -62,6 +62,11 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/contact" className="hover:text-brand-300 transition-colors">Book Online Appointment</Link>
+              </li>
+              <li className="pt-1">
+                <Link href="/admin" className="inline-flex items-center gap-1.5 text-brand-400 hover:text-brand-300 font-bold transition-colors">
+                  <Lock className="w-3.5 h-3.5" /> Staff / Reception Admin Portal
+                </Link>
               </li>
             </ul>
           </div>
