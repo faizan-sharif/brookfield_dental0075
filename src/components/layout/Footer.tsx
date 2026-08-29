@@ -31,7 +31,7 @@ export function Footer() {
             </p>
 
             <div className="pt-2 flex items-center gap-3 text-xs text-brand-300 font-medium">
-              <ShieldCheck className="w-4 h-4 text-brand-400" /> 52+ Years Clinical Excellence
+              <ShieldCheck className="w-4 h-4 text-brand-400" /> 32+ Years Clinical Excellence
             </div>
           </div>
 
