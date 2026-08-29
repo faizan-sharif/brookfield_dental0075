@@ -16,7 +16,7 @@ export function WhyChooseUs() {
     {
       icon: UserCheck,
       title: 'Expert Doctors',
-      description: 'Directed by Dr. Maqsood A. Chaudhry DDS with 32+ years of compassionate clinical excellence.',
+      description: 'Directed by Dr. Maqsood A. Chaudhry DDS with 52+ years of compassionate clinical excellence.',
       link: '/about',
     },
     {

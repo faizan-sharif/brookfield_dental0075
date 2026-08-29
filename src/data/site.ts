@@ -9,7 +9,7 @@ export const siteConfig = {
   reviewsCount: '50+ 5-Star Reviews',
   patientSatisfaction: '99%',
   implantsPlaced: 'Hundreds Placed',
-  experienceYears: '32+',
+  experienceYears: '52+',
   hours: [
     { days: 'Monday - Friday', time: '8:00 AM - 6:00 PM' },
     { days: 'Saturday', time: '9:00 AM - 3:00 PM' },

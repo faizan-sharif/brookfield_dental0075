@@ -55,12 +55,12 @@ export function DoctorProfile({ onOpenBooking }: DoctorProfileProps) {
                 Meet Dr. Maqsood A. Chaudhry, DDS
               </h2>
               <p className="text-xs font-bold text-brand-600 uppercase tracking-widest">
-                32+ Years of Dedicated Clinical Excellence
+                52+ Years of Dedicated Clinical Excellence
               </p>
             </div>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Dr. Maqsood A. Chaudhry is a dedicated and compassionate dentist with a passion for delivering high-quality dental care. With 32 years of experience in the dental industry, he is committed to staying current with the latest advancements in dentistry, ensuring his patients receive the best possible care.
+              Dr. Maqsood A. Chaudhry is a dedicated and compassionate dentist with a passion for delivering high-quality dental care. With 52+ years of experience in the dental industry, he is committed to staying current with the latest advancements in dentistry, ensuring his patients receive the best possible care.
             </p>
 
             <p className="text-sm text-slate-600 leading-relaxed">
