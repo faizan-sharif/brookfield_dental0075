@@ -10,30 +10,30 @@ interface CyanCtaBannerProps {
 
 export function CyanCtaBanner({ onOpenBooking }: CyanCtaBannerProps) {
   return (
-    <section className="py-16 bg-cyan-gradient text-white relative overflow-hidden shadow-2xl">
-      <div className="max-w-5xl mx-auto px-4 text-center space-y-6 relative z-10">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
+    <section className="py-16 bg-brand-500 text-navy-900 relative overflow-hidden shadow-xl">
+      <div className="max-w-4xl mx-auto px-4 text-center space-y-5 relative z-10">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-tight tracking-tight">
           Your consultation is free. <br />
-          You start in 1–2 days away.
+          Your slot is 1–2 days away.
         </h2>
 
-        <p className="text-sm sm:text-base text-cyan-50 font-semibold max-w-xl mx-auto">
-          Complimentary oral evaluation & digital X-rays ($150 value) for all new Northern Virginia patients.
+        <p className="text-xs sm:text-sm text-navy-950/80 font-medium max-w-lg mx-auto">
+          Book online in under a minute, or call and speak to someone at the front desk today.
         </p>
 
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3.5">
           <button
             onClick={onOpenBooking}
-            className="w-full sm:w-auto py-4 px-9 btn-navy text-sm font-black tracking-wider uppercase shadow-xl flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto py-3.5 px-7 bg-navy-900 text-white hover:bg-navy-950 rounded-full font-bold text-xs sm:text-sm shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Calendar className="w-5 h-5" />
-            <span>Book Now</span>
+            <Calendar className="w-4 h-4 text-brand-400" />
+            <span>Book appointment</span>
           </button>
 
           <a href={`tel:${siteConfig.phonePrimary}`} className="w-full sm:w-auto">
-            <button className="w-full sm:w-auto py-4 px-9 bg-white text-navy-900 rounded-full font-black text-sm tracking-wider uppercase shadow-md hover:bg-slate-50 transition-colors flex items-center justify-center gap-2">
-              <Phone className="w-5 h-5 text-brand-500" />
-              <span>Call {siteConfig.phonePrimary}</span>
+            <button className="w-full sm:w-auto py-3.5 px-7 bg-white text-navy-900 hover:bg-slate-50 rounded-full font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <Phone className="w-4 h-4 text-brand-500" />
+              <span>(703) 913-1377</span>
             </button>
           </a>
         </div>
