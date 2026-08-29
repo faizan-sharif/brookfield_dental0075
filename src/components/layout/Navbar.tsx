@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Calendar, Menu, X, Sparkles, Clock, ShieldCheck } from 'lucide-react';
+import { Phone, Calendar, Menu, X, ArrowRight, Clock } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 
 interface NavbarProps {
@@ -25,9 +25,8 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Compute dynamic today hours based on day of week
   useEffect(() => {
-    const day = new Date().getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+    const day = new Date().getDay();
     if (day === 0) {
       setTodayHours('Closed Today (Emergency Only)');
     } else if (day === 5) {
@@ -40,76 +39,70 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: 'HOME', href: '/' },
-    { name: 'ABOUT', href: '/about' },
-    { name: 'SERVICES', href: '/services' },
-    { name: 'BLOG', href: '/promotions' },
-    { name: 'CONTACT', href: '/contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'Pricing', href: '/promotions' },
+    { name: 'About', href: '/about' },
+    { name: 'Blog', href: '/promotions' },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40">
-      {/* Hotline Top Bar */}
-      <div className="bg-navy-900 text-white text-xs py-2 px-4 border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
-          <div className="flex items-center gap-4 text-slate-300">
-            <span className="flex items-center gap-1.5 font-medium">
-              <Phone className="w-3.5 h-3.5 text-brand-400" /> Reception:{' '}
-              <a href={`tel:${siteConfig.phonePrimary}`} className="text-white hover:text-brand-400 font-bold underline">
-                {siteConfig.phonePrimary}
-              </a>
+      {/* Top Thin Navy Accent Bar */}
+      <div className="bg-navy-900 text-white text-xs py-1.5 px-4 border-b border-navy-800">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3 text-[11px] text-slate-300 font-medium">
+            <span className="flex items-center gap-1 text-emerald-400">
+              <Clock className="w-3 h-3" /> {todayHours}
             </span>
-            <span className="hidden md:inline text-slate-600">|</span>
-            <span className="hidden md:inline text-slate-300">
-              Toll Free: <a href={`tel:${siteConfig.phoneTollFree}`} className="text-white font-semibold">{siteConfig.phoneTollFree}</a>
+            <span className="hidden sm:inline text-slate-600">|</span>
+            <span className="hidden sm:inline text-brand-300 font-semibold">
+              20% Lower Rates Than VA Average
             </span>
           </div>
 
-          <div className="flex items-center gap-3 text-slate-300">
-            <span className="flex items-center gap-1 text-emerald-400 font-medium">
-              <Clock className="w-3.5 h-3.5" /> {todayHours}
-            </span>
-            <span className="bg-brand-500/20 text-brand-300 text-[11px] px-2.5 py-0.5 rounded-full border border-brand-400/30">
-              20% Less Than Other Offices
+          <div className="flex items-center gap-3 text-[11px] text-slate-300">
+            <span className="flex items-center gap-1">
+              <Phone className="w-3 h-3 text-brand-400" />
+              <a href={`tel:${siteConfig.phonePrimary}`} className="text-white hover:text-brand-300 font-bold">
+                {siteConfig.phonePrimary}
+              </a>
             </span>
           </div>
         </div>
       </div>
 
-      {/* Floating Header */}
+      {/* Clean White Main Navigation matching reference image */}
       <nav
-        className={`transition-all duration-300 ${
-          scrolled
-            ? 'bg-navy-950/95 text-white backdrop-blur-md shadow-md py-3 border-b border-navy-800'
-            : 'bg-navy-950/90 text-white backdrop-blur-md py-4 border-b border-navy-800/80'
+        className={`bg-white transition-all duration-300 ${
+          scrolled ? 'shadow-md py-3.5 border-b border-slate-200' : 'py-4 border-b border-slate-100'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-cyan-gradient flex items-center justify-center text-white shadow-cyan group-hover:scale-105 transition-transform">
-              <Sparkles className="w-5 h-5 fill-current" />
-            </div>
-            <div>
-              <span className="text-lg font-black text-white tracking-tight block leading-none">
-                BROOKFIELD
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="flex flex-col">
+              <span className="text-xl font-black text-navy-900 tracking-tight leading-none group-hover:text-brand-500 transition-colors">
+                Brookfield<span className="text-brand-500 font-extrabold">Dental</span>
               </span>
-              <span className="text-[10px] font-extrabold text-brand-400 tracking-widest uppercase block mt-0.5">
-                Dental Associates
+              <span className="text-[10px] font-bold text-slate-400 tracking-widest uppercase mt-0.5">
+                Associates
               </span>
             </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-8">
+          {/* Center Title-Case Nav Links (Home, Services, Pricing, About, Blog) */}
+          <div className="hidden lg:flex items-center gap-9">
             {navLinks.map((link) => {
               const active = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-xs font-black tracking-wider uppercase transition-colors hover:text-brand-400 ${
-                    active ? 'text-brand-400 border-b-2 border-brand-400 pb-1' : 'text-white'
+                  className={`text-sm font-semibold transition-colors ${
+                    active
+                      ? 'text-brand-500 font-bold'
+                      : 'text-navy-900 hover:text-brand-500'
                   }`}
                 >
                   {link.name}
@@ -118,21 +111,21 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
             })}
           </div>
 
-          {/* Right Cyan CTA Button */}
+          {/* Right Cyan Pill Button ("Book a call ->") */}
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={onOpenBooking}
-              className="py-2.5 px-6 btn-cyan text-xs uppercase tracking-wider font-extrabold flex items-center gap-2"
+              className="py-2.5 px-6 btn-cyan text-xs font-bold rounded-full flex items-center gap-2 shadow-sm hover:shadow-md cursor-pointer"
             >
-              <Calendar className="w-4 h-4" />
-              <span>Book Now</span>
+              <span>Book a call</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
           {/* Mobile Drawer Trigger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl bg-navy-900 border border-navy-800 text-white"
+            className="lg:hidden p-2 rounded-xl bg-slate-50 border border-slate-200 text-navy-900"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -146,7 +139,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-navy-950 border-b border-navy-800 shadow-xl overflow-hidden"
+            className="lg:hidden bg-white border-b border-slate-200 shadow-xl overflow-hidden"
           >
             <div className="p-4 space-y-2">
               {navLinks.map((link) => (
@@ -154,10 +147,10 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-xl text-xs font-black uppercase tracking-wider transition-colors ${
+                  className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
                     pathname === link.href
-                      ? 'bg-brand-500/20 text-brand-400 border border-brand-400/30'
-                      : 'text-white hover:bg-navy-900'
+                      ? 'bg-brand-50 text-brand-600 font-bold'
+                      : 'text-navy-900 hover:bg-slate-50'
                   }`}
                 >
                   {link.name}
@@ -170,9 +163,10 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
                     setMobileMenuOpen(false);
                     onOpenBooking();
                   }}
-                  className="w-full py-3.5 btn-cyan text-sm font-bold uppercase tracking-wider"
+                  className="w-full py-3.5 btn-cyan text-xs font-bold rounded-full flex items-center justify-center gap-2"
                 >
-                  Book Now
+                  <span>Book a call</span>
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
