@@ -10,25 +10,29 @@ interface PromotionsSectionProps {
 
 export function PromotionsSection({ onClaimClick }: PromotionsSectionProps) {
   return (
-    <section className="py-20 bg-slate-50 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-extrabold tracking-widest text-brand-600 uppercase bg-brand-100/80 px-3.5 py-1 rounded-full border border-brand-200 inline-block mb-3">
-            Exclusive Offers & Discounts
+    <section className="py-20 bg-white relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-2xl mb-12">
+          <span className="text-xs font-black uppercase tracking-widest text-brand-500 block mb-1">
+            TRANSPARENT PRICING
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Explore Our Current Dental Promotions
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight">
+            Limited–time offers for new patients
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
-            Don't miss out on our exclusive offers designed with your dental health in mind. Claim your voucher online or call our office today!
+          <p className="text-xs sm:text-sm text-slate-500 mt-2 font-medium">
+            Claim your savings today. All offers are confirmed in writing and honored at checkout.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-8">
           {promotionsData.map((promo) => (
             <PromotionCard key={promo.id} promo={promo} onClaimClick={onClaimClick} />
           ))}
         </div>
+
+        <p className="text-[11px] text-slate-400 font-semibold text-center sm:text-left">
+          Financing available. Final pricing is confirmed in writing after your visit.
+        </p>
       </div>
     </section>
   );
