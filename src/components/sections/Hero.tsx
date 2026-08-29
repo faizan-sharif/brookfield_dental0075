@@ -37,7 +37,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
                 onClick={() => onOpenBooking()}
                 className="w-full sm:w-auto py-3.5 px-8 btn-navy text-sm font-bold shadow-md cursor-pointer"
               >
-                Get Started
+                Book Appointment
               </button>
 
               <a href={`tel:${siteConfig.phonePrimary}`} className="w-full sm:w-auto">
