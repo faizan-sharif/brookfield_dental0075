@@ -61,9 +61,9 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
           {/* Prominent Official Brookfield Dental Associates Emblem Logo */}
           <Link href="/" className="flex items-center group py-0.5">
             <img
-              src="/images/logo.png"
+              src="/images/logo_hd.png"
               alt="Brookfield Dental Associates"
-              className="h-16 sm:h-20 md:h-22 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-20 sm:h-24 md:h-28 w-auto object-contain transition-transform group-hover:scale-105 py-1"
             />
           </Link>
 
