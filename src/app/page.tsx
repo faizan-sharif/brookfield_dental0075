@@ -5,6 +5,8 @@ import { Hero } from '@/components/sections/Hero';
 import { QuickStats } from '@/components/sections/QuickStats';
 import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
 import { FeaturedImplants } from '@/components/sections/FeaturedImplants';
+import { SmileEnhancement } from '@/components/sections/SmileEnhancement';
+import { TreatmentRange } from '@/components/sections/TreatmentRange';
 import { DoctorProfile } from '@/components/sections/DoctorProfile';
 import { TeamSection } from '@/components/sections/TeamSection';
 import { ResultsSection } from '@/components/sections/ResultsSection';
@@ -37,6 +39,8 @@ export default function HomePage() {
       <QuickStats />
       <WhyChooseUs />
       <FeaturedImplants onOpenBooking={() => handleOpenBooking({ service: 'Dental Implants' })} />
+      <SmileEnhancement onOpenBooking={() => handleOpenBooking({ service: 'Smile Enhancement' })} />
+      <TreatmentRange onOpenBooking={(service) => handleOpenBooking({ service: service || 'Dental Implants' })} />
       <DoctorProfile onOpenBooking={() => handleOpenBooking({ service: 'Consultation', doctor: 'Dr. Maqsood A. Chaudhry' })} />
       <TeamSection />
       <ResultsSection />
