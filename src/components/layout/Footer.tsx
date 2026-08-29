@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Sparkles, Clock, ShieldCheck, Heart, Lock } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, Heart, Lock } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 
 export function Footer() {
@@ -16,14 +16,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           {/* Brand Info */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center">
-              <div className="bg-white p-2 rounded-xl shadow-md inline-block">
-                <img
-                  src="/images/logo.png"
-                  alt="Brookfield Dental Associates Logo"
-                  className="h-12 w-auto object-contain"
-                />
-              </div>
+            <Link href="/" className="inline-block group">
+              <img
+                src="/images/logo.png"
+                alt="Brookfield Dental Associates Logo"
+                className="h-14 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105"
+              />
             </Link>
 
             <p className="text-xs text-slate-300 leading-relaxed">
