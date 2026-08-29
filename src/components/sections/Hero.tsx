@@ -24,7 +24,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
             <span className="badge-cyan">Caring For Your Smile</span>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-navy-900 leading-[1.15] tracking-tight">
-              Your <span className="text-brand-500 underline decoration-brand-300">Smile</span> <br />
+              Your <span className="text-brand-500">Smile</span> <br />
               Matters to Us
             </h1>
 
