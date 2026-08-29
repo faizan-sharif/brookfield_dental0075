@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Calendar, Menu, X, ArrowRight, Clock } from 'lucide-react';
@@ -72,26 +73,27 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
         </div>
       </div>
 
-      {/* Clean White Main Navigation matching reference image */}
+      {/* Clean White Main Navigation matching reference screenshot */}
       <nav
         className={`bg-white transition-all duration-300 ${
-          scrolled ? 'shadow-md py-3.5 border-b border-slate-200' : 'py-4 border-b border-slate-100'
+          scrolled ? 'shadow-md py-2.5 border-b border-slate-200' : 'py-3 border-b border-slate-100'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="flex flex-col">
-              <span className="text-xl font-black text-navy-900 tracking-tight leading-none group-hover:text-brand-500 transition-colors">
-                Brookfield<span className="text-brand-500 font-extrabold">Dental</span>
-              </span>
-              <span className="text-[10px] font-bold text-slate-400 tracking-widest uppercase mt-0.5">
-                Associates
-              </span>
+          {/* Official Clinic Logo Image */}
+          <Link href="/" className="flex items-center group">
+            <div className="relative w-44 sm:w-52 h-12">
+              <Image
+                src="/images/logo.png"
+                alt="Brookfield Dental Associates Logo"
+                fill
+                priority
+                className="object-contain object-left group-hover:scale-105 transition-transform"
+              />
             </div>
           </Link>
 
-          {/* Center Title-Case Nav Links (Home, Services, Pricing, About, Blog) */}
+          {/* Center Title-Case Nav Links */}
           <div className="hidden lg:flex items-center gap-9">
             {navLinks.map((link) => {
               const active = pathname === link.href;

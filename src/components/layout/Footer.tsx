@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, MapPin, Sparkles, Clock, ShieldCheck, Heart, Lock } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 
@@ -16,17 +17,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           {/* Brand Info */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-brand-400 flex items-center justify-center text-white shadow-lg">
-                <Sparkles className="w-5 h-5 fill-current" />
-              </div>
-              <div>
-                <span className="text-lg font-black tracking-tight text-white block leading-none">
-                  BROOKFIELD
-                </span>
-                <span className="text-[10px] font-bold text-brand-400 tracking-widest uppercase block mt-0.5">
-                  Dental Associates
-                </span>
+            <Link href="/" className="flex items-center">
+              <div className="relative w-48 h-12 bg-white p-1 rounded-xl shadow-md">
+                <Image
+                  src="/images/logo.png"
+                  alt="Brookfield Dental Associates Logo"
+                  fill
+                  className="object-contain p-1"
+                />
               </div>
             </Link>
 
