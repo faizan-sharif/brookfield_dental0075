@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Brookfield Dental Associates',
   tagline: 'Radiant Smile • Trusted Care • Healthy Life',
-  address: '6120 Brandon Ave, Springfield, VA 22150 (Serving Falls Church & Northern Virginia)',
+  address: '7108 Brookfield Plaza, Springfield, VA 22150',
   phonePrimary: '703-913-1377',
   phoneTollFree: '(888) 4000-3434',
   email: 'info@brookfielddentalassociates.com',
@@ -11,9 +11,13 @@ export const siteConfig = {
   implantsPlaced: 'Hundreds Placed',
   experienceYears: '32+',
   hours: [
-    { days: 'Monday - Friday', time: '8:00 AM - 6:00 PM' },
-    { days: 'Saturday', time: '9:00 AM - 3:00 PM' },
-    { days: 'Sunday', time: 'Emergency Appointments Only' },
+    { days: 'Monday', time: '9:00 AM - 5:00 PM' },
+    { days: 'Tuesday', time: '9:00 AM - 5:00 PM' },
+    { days: 'Wednesday', time: '9:00 AM - 5:00 PM' },
+    { days: 'Thursday', time: 'CLOSED' },
+    { days: 'Friday', time: '9:00 AM - 5:00 PM' },
+    { days: 'Saturday', time: '8:00 AM - 4:00 PM' },
+    { days: 'Sunday', time: 'CLOSED' },
   ],
   socials: {
     facebook: 'https://www.facebook.com/brookfielddentalassociates',
