@@ -14,6 +14,7 @@ interface NavbarProps {
 export function Navbar({ onOpenBooking }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [todayHours, setTodayHours] = useState('Open Today: 8 AM - 6 PM');
   const pathname = usePathname();
 
   useEffect(() => {
@@ -22,6 +23,20 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Compute dynamic today hours based on day of week
+  useEffect(() => {
+    const day = new Date().getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+    if (day === 0) {
+      setTodayHours('Closed Today (Emergency Only)');
+    } else if (day === 5) {
+      setTodayHours('Open Today: 8 AM - 4 PM');
+    } else if (day === 6) {
+      setTodayHours('Open Today: 8 AM - 2 PM');
+    } else {
+      setTodayHours('Open Today: 8 AM - 6 PM');
+    }
   }, []);
 
   const navLinks = [
@@ -52,7 +67,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
 
           <div className="flex items-center gap-3 text-slate-300">
             <span className="flex items-center gap-1 text-emerald-400 font-medium">
-              <Clock className="w-3.5 h-3.5" /> Open Today: 8 AM - 6 PM
+              <Clock className="w-3.5 h-3.5" /> {todayHours}
             </span>
             <span className="bg-brand-500/20 text-brand-300 text-[11px] px-2.5 py-0.5 rounded-full border border-brand-400/30">
               20% Less Than Other Offices
@@ -85,7 +100,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
             </div>
           </Link>
 
-          {/* Desktop Nav matching reference screenshot */}
+          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => {
               const active = pathname === link.href;
