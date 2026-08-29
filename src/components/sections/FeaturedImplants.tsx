@@ -65,7 +65,7 @@ export function FeaturedImplants({ onOpenBooking }: FeaturedImplantsProps) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <ul className="space-y-2.5">
                 {col1.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2.5 text-xs sm:text-sm font-bold text-navy-900">
+                  <li key={i} className="flex items-center gap-2.5 text-xs sm:text-sm font-normal text-slate-700">
                     <CheckCircle2 className="w-4 h-4 text-brand-500 shrink-0" />
                     <span>{item}</span>
                   </li>
@@ -74,7 +74,7 @@ export function FeaturedImplants({ onOpenBooking }: FeaturedImplantsProps) {
 
               <ul className="space-y-2.5">
                 {col2.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2.5 text-xs sm:text-sm font-bold text-navy-900">
+                  <li key={i} className="flex items-center gap-2.5 text-xs sm:text-sm font-normal text-slate-700">
                     <CheckCircle2 className="w-4 h-4 text-brand-500 shrink-0" />
                     <span>{item}</span>
                   </li>
