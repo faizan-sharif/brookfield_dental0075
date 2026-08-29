@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Phone } from 'lucide-react';
 
 interface DoctorProfileProps {
   onOpenBooking: () => void;
@@ -62,11 +62,12 @@ export function DoctorProfile({ onOpenBooking }: DoctorProfileProps) {
                 Book with Dr. Chaudhry
               </button>
 
-              <Link href="/about">
-                <button className="py-3 px-7 bg-white border border-slate-200 hover:border-slate-300 text-navy-900 rounded-full text-xs font-extrabold shadow-sm hover:bg-slate-50 transition-all">
-                  Meet the team
+              <a href="tel:88840003434">
+                <button className="py-3 px-7 bg-white border border-slate-200 hover:border-slate-300 text-navy-900 rounded-full text-xs font-extrabold shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-brand-500" />
+                  <span>Call (888) 4000-3434</span>
                 </button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
