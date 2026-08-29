@@ -20,7 +20,7 @@ export function Footer() {
               <img
                 src="/images/logo_white_hd.png"
                 alt="Brookfield Dental Associates Logo"
-                className="h-16 sm:h-20 w-auto object-contain transition-transform group-hover:scale-105"
+                className="h-20 sm:h-24 w-auto object-contain transition-transform group-hover:scale-105"
               />
             </Link>
 
