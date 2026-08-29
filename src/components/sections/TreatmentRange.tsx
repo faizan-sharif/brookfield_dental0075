@@ -63,19 +63,19 @@ export function TreatmentRange({ onOpenBooking }: TreatmentRangeProps) {
                     />
                   </div>
 
-                  <div className="p-5 sm:p-6">
-                    <h3 className="text-base sm:text-lg font-extrabold text-navy-900 mb-1.5 group-hover:text-brand-500 transition-colors">
+                  <div className="p-5 pb-3">
+                    <h3 className="text-base sm:text-lg font-extrabold text-navy-900 mb-1 group-hover:text-brand-500 transition-colors">
                       {c.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed min-h-[44px]">
+                    <p className="text-xs text-slate-600 leading-snug">
                       {c.description}
                     </p>
                   </div>
                 </div>
 
-                {/* Compact Bottom Badge Section */}
-                <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0">
-                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
+                {/* Compact Bottom Badge Section with tight spacing */}
+                <div className="px-5 pb-4 pt-0">
+                  <div className="flex flex-wrap gap-1.5 pt-2.5 border-t border-slate-100">
                     {c.badges.map((b, bIdx) => (
                       <span
                         key={bIdx}
