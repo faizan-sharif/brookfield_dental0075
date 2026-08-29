@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Calendar, Menu, X, ArrowRight, Clock } from 'lucide-react';
+import { Phone, Calendar, Menu, X, ArrowRight, MapPin } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 
 interface NavbarProps {
@@ -14,7 +14,6 @@ interface NavbarProps {
 export function Navbar({ onOpenBooking }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [todayHours, setTodayHours] = useState('Open Today: 8 AM - 6 PM');
   const pathname = usePathname();
 
   useEffect(() => {
@@ -23,19 +22,6 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const day = new Date().getDay();
-    if (day === 0) {
-      setTodayHours('Closed Today (Emergency Only)');
-    } else if (day === 5) {
-      setTodayHours('Open Today: 8 AM - 4 PM');
-    } else if (day === 6) {
-      setTodayHours('Open Today: 8 AM - 2 PM');
-    } else {
-      setTodayHours('Open Today: 8 AM - 6 PM');
-    }
   }, []);
 
   const navLinks = [
@@ -48,31 +34,24 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40">
-      {/* Top Thin Navy Accent Bar */}
-      <div className="bg-navy-900 text-white text-xs py-1.5 px-4 border-b border-navy-800">
+      {/* Top Thin Navy Bar matching screenshot (Left: Location, Right: Phone Number) */}
+      <div className="bg-navy-900 text-white text-xs py-2 px-4 border-b border-navy-800">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3 text-[11px] text-slate-300 font-medium">
-            <span className="flex items-center gap-1 text-emerald-400">
-              <Clock className="w-3 h-3" /> {todayHours}
-            </span>
-            <span className="hidden sm:inline text-slate-600">|</span>
-            <span className="hidden sm:inline text-brand-300 font-semibold">
-              20% Lower Rates Than VA Average
-            </span>
+          <div className="flex items-center gap-1.5 text-[11px] text-slate-300 font-medium">
+            <MapPin className="w-3.5 h-3.5 text-brand-400 shrink-0" />
+            <span>{siteConfig.address}</span>
           </div>
 
-          <div className="flex items-center gap-3 text-[11px] text-slate-300">
-            <span className="flex items-center gap-1">
-              <Phone className="w-3 h-3 text-brand-400" />
-              <a href={`tel:${siteConfig.phonePrimary}`} className="text-white hover:text-brand-300 font-bold">
-                {siteConfig.phonePrimary}
-              </a>
-            </span>
+          <div className="flex items-center gap-1.5 text-[11px] text-slate-300">
+            <Phone className="w-3.5 h-3.5 text-brand-400 shrink-0" />
+            <a href={`tel:${siteConfig.phonePrimary}`} className="text-white hover:text-brand-300 font-bold">
+              {siteConfig.phonePrimary}
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Clean White Main Navigation matching reference screenshot */}
+      {/* Clean White Main Navigation */}
       <nav
         className={`bg-white transition-all duration-300 ${
           scrolled ? 'shadow-md py-2 border-b border-slate-200' : 'py-2.5 border-b border-slate-100'
