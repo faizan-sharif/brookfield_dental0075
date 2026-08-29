@@ -29,7 +29,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
             </h1>
 
             <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-              We are dedicated to providing exceptional dental care to families in Falls Church, Springfield, and Northern Virginia. From Dental Implants to Lumineer Veneers & Zoom Whitening at <span className="font-bold text-navy-900">20% less than other offices</span>.
+              We are dedicated to providing exceptional dental care to families in the Falls Church area, treating patients of all ages with expert care.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
