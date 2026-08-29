@@ -18,7 +18,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="inline-block group">
               <img
-                src="/images/logo.png"
+                src="/images/logo_white.png"
                 alt="Brookfield Dental Associates Logo"
                 className="h-14 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105"
               />
