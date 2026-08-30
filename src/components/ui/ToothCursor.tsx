@@ -92,37 +92,37 @@ export function ToothCursor() {
       {/* Subtle Cyan Glow Trail Behind Cursor */}
       <motion.div
         animate={{
-          x: position.x - 14,
-          y: position.y - 14,
-          scale: isClicking ? 0.75 : isHovered ? 1.5 : 1,
-          opacity: isHovered ? 0.9 : 0.45,
+          x: position.x - 10,
+          y: position.y - 10,
+          scale: isClicking ? 0.7 : isHovered ? 1.3 : 1,
+          opacity: isHovered ? 0.85 : 0.4,
         }}
         transition={{ type: 'spring', damping: 28, stiffness: 350, mass: 0.1 }}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full bg-cyan-400/35 blur-md pointer-events-none"
+        className="fixed top-0 left-0 w-6 h-6 rounded-full bg-cyan-400/30 blur-sm pointer-events-none"
       />
 
       {/* 100% Transparent 3D Tooth Custom Mouse Cursor */}
       <motion.div
         animate={{
-          x: position.x - 16,
-          y: position.y - 16,
-          scale: isClicking ? 0.8 : isHovered ? 1.4 : 1,
-          rotate: isHovered ? 15 : 0,
+          x: position.x - 10,
+          y: position.y - 10,
+          scale: isClicking ? 0.8 : isHovered ? 1.25 : 1,
+          rotate: isHovered ? 12 : 0,
         }}
-        transition={{ type: 'spring', damping: 18, stiffness: 380, mass: 0.12 }}
-        className="fixed top-0 left-0 w-9 h-9 pointer-events-none select-none flex items-center justify-center"
+        transition={{ type: 'spring', damping: 20, stiffness: 400, mass: 0.1 }}
+        className="fixed top-0 left-0 w-6 h-6 pointer-events-none select-none flex items-center justify-center"
       >
         {toothSrc ? (
           <img
             src={toothSrc}
             alt="Tooth Cursor"
-            className="w-full h-full object-contain filter drop-shadow-[0_5px_12px_rgba(6,182,212,0.8)] pointer-events-none"
+            className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(6,182,212,0.8)] pointer-events-none"
           />
         ) : (
           <img
             src="/images/realistic_tooth.jpg"
             alt="Tooth Cursor"
-            className="w-full h-full object-contain filter drop-shadow-[0_5px_12px_rgba(6,182,212,0.8)] pointer-events-none"
+            className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(6,182,212,0.8)] pointer-events-none"
             style={{ mixBlendMode: 'screen' }}
           />
         )}
