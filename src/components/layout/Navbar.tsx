@@ -93,7 +93,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
               onClick={onOpenBooking}
               className="py-2.5 px-6 btn-cyan text-xs font-bold rounded-full flex items-center gap-2 shadow-sm hover:shadow-md cursor-pointer"
             >
-              <span>Book a call</span>
+              <span>Book an Appointment</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -141,7 +141,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
                   }}
                   className="w-full py-3.5 btn-cyan text-xs font-bold rounded-full flex items-center justify-center gap-2"
                 >
-                  <span>Book a call</span>
+                  <span>Book an Appointment</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
