@@ -29,7 +29,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
     { name: 'Services', href: '/services' },
     { name: 'Pricing', href: '/promotions' },
     { name: 'About', href: '/about' },
-    { name: 'Blog', href: '/promotions' },
+    { name: 'Blog', href: '/blog' },
   ];
 
   return (
