@@ -51,7 +51,7 @@ export function BlogCard({ post }: BlogCardProps) {
         {/* Read More Footer */}
         <div className="p-5 pt-0">
           <Link
-            href="/blog"
+            href={`/blog/${post.id}`}
             className="inline-flex items-center gap-1.5 text-xs font-extrabold text-brand-500 hover:text-brand-600 transition-colors cursor-pointer pt-2.5 border-t border-slate-100 w-full"
           >
             <span>Read Article</span>
