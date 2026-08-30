@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { teamData } from '@/data/team';
 import { TeamCard } from '@/components/ui/TeamCard';
 import { DoctorProfile } from '@/components/sections/DoctorProfile';
-import { VisionMission } from '@/components/sections/VisionMission';
 import { AppointmentModal } from '@/components/ui/AppointmentModal';
 
 export default function AboutPage() {
@@ -46,9 +45,6 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-
-        {/* Vision & Mission */}
-        <VisionMission />
       </div>
 
       <AppointmentModal
