@@ -91,10 +91,9 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={onOpenBooking}
-              className="py-2.5 px-6 btn-cyan text-xs font-bold rounded-full flex items-center gap-2 shadow-sm hover:shadow-md cursor-pointer"
+              className="py-2.5 px-6 btn-cyan text-xs font-bold rounded-full flex items-center justify-center shadow-sm hover:shadow-md cursor-pointer"
             >
               <span>Book an Appointment</span>
-              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
@@ -139,10 +138,9 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
                     setMobileMenuOpen(false);
                     onOpenBooking();
                   }}
-                  className="w-full py-3.5 btn-cyan text-xs font-bold rounded-full flex items-center justify-center gap-2"
+                  className="w-full py-3.5 btn-cyan text-xs font-bold rounded-full flex items-center justify-center"
                 >
                   <span>Book an Appointment</span>
-                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
