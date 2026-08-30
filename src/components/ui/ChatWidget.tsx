@@ -5,12 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, Sparkles, Phone, Calendar } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import { ThreeDToothCanvas } from './ThreeDToothCanvas';
+import { getAIAssistantResponse } from '@/lib/aiAssistant';
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ text: string; isBot: boolean }[]>([
     {
-      text: `Hi! Welcome to Brookfield Dental Associates. I can help with services, hours, booking, insurance and more. How can I help you today?`,
+      text: `Hi! Welcome to Brookfield Dental Associates. I can help with our doctors, clinic hours, location, services, implants, pricing, and booking an appointment. How can I help you today?`,
       isBot: true,
     },
   ]);
@@ -31,23 +32,9 @@ export function ChatWidget() {
 
     // Instant smart response mapping
     setTimeout(() => {
-      let botReply = `Thank you for asking! Dr. Maqsood A. Chaudhry and our team offer comprehensive general, cosmetic, and implant dentistry. You can call us directly at ${siteConfig.phonePrimary} or book online for a Free Consultation!`;
-      const q = query.toLowerCase();
-
-      if (q.includes('hour') || q.includes('open') || q.includes('time')) {
-        botReply = `Our clinic hours: Monday–Friday 8:00 AM–6:00 PM, Saturday 9:00 AM–3:00 PM. Emergency walk-ins are welcome!`;
-      } else if (q.includes('implant') || q.includes('all-on-4') || q.includes('teeth')) {
-        botReply = `We specialize in Single Implants, Snap-In Dentures, and All-on-4® Full Arch Implants with 20% lower pricing than average Northern VA clinics! Hundreds placed by Dr. Chaudhry.`;
-      } else if (q.includes('cost') || q.includes('price') || q.includes('deal') || q.includes('promo') || q.includes('offer')) {
-        botReply = `We have active special offers: 1) FREE New Patient Exam & Consult ($150 value), 2) 20% OFF 1st Visit, 3) $400 Zoom Whitening, and 4) $95 Full Exam & X-Rays!`;
-      } else if (q.includes('location') || q.includes('where') || q.includes('address')) {
-        botReply = `We are located at 6120 Brandon Ave, Springfield, VA 22150, conveniently serving Falls Church, Springfield, Alexandria, and surrounding Northern Virginia areas.`;
-      } else if (q.includes('phone') || q.includes('contact') || q.includes('call')) {
-        botReply = `Call our direct reception hotline at ${siteConfig.phonePrimary} or toll-free at ${siteConfig.phoneTollFree}!`;
-      }
-
+      const botReply = getAIAssistantResponse(query);
       setMessages((prev) => [...prev, { text: botReply, isBot: true }]);
-    }, 600);
+    }, 400);
   };
 
   return (
@@ -111,7 +98,7 @@ export function ChatWidget() {
                   className={`flex ${msg.isBot ? 'justify-start' : 'justify-end'}`}
                 >
                   <div
-                    className={`max-w-[82%] px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm ${
+                    className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm whitespace-pre-line leading-relaxed ${
                       msg.isBot
                         ? 'bg-slate-800 text-slate-200 border border-white/10 rounded-tl-none shadow-sm'
                         : 'bg-gradient-to-r from-brand-500 to-brand-600 text-white rounded-tr-none shadow-md'
