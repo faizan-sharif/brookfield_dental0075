@@ -10,7 +10,7 @@ import {
   isSlotBooked,
   BookingRecord,
   getTodayDateString,
-  isSunday,
+  isClosedDay,
   isPastDate,
   isSlotClosedForDay,
   getFirstAvailableSlot,
@@ -70,8 +70,8 @@ export function AppointmentModal({
   const handleDateChange = (newDate: string) => {
     setErrorMsg('');
 
-    if (isSunday(newDate)) {
-      setErrorMsg('The clinic is CLOSED on Sundays. Please select Monday to Saturday.');
+    if (isClosedDay(newDate)) {
+      setErrorMsg('The clinic is CLOSED on Thursdays and Sundays. Please select an open working day.');
     } else if (isPastDate(newDate)) {
       setErrorMsg('Selected date is in the past. Please select today or a future date.');
     }
@@ -104,8 +104,8 @@ export function AppointmentModal({
       return;
     }
 
-    if (isSunday(formData.preferredDate)) {
-      setErrorMsg('The clinic is CLOSED on Sundays. Please select Monday to Saturday.');
+    if (isClosedDay(formData.preferredDate)) {
+      setErrorMsg('The clinic is CLOSED on Thursdays and Sundays. Please select an open working day.');
       return;
     }
 

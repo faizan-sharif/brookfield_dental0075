@@ -13,6 +13,7 @@ export interface BookingRecord {
 }
 
 export const TIME_SLOTS = [
+  '08:00 AM',
   '09:00 AM',
   '10:00 AM',
   '11:00 AM',
@@ -108,10 +109,20 @@ export function getTodayDateString(): string {
   return `${year}-${month}-${day}`;
 }
 
+export function isThursday(dateStr: string): boolean {
+  if (!dateStr) return false;
+  const d = new Date(`${dateStr}T00:00:00`);
+  return d.getDay() === 4;
+}
+
 export function isSunday(dateStr: string): boolean {
   if (!dateStr) return false;
   const d = new Date(`${dateStr}T00:00:00`);
   return d.getDay() === 0;
+}
+
+export function isClosedDay(dateStr: string): boolean {
+  return isThursday(dateStr) || isSunday(dateStr);
 }
 
 export function isSaturday(dateStr: string): boolean {
@@ -126,16 +137,17 @@ export function isPastDate(dateStr: string): boolean {
 }
 
 export function isSlotClosedForDay(dateStr: string, slot: string): boolean {
-  if (isSunday(dateStr)) return true; // Sunday closed
+  if (isClosedDay(dateStr)) return true; // Thursday & Sunday CLOSED
   if (isSaturday(dateStr)) {
-    // Saturday open 9 AM - 3 PM. 4 PM and 5 PM slots closed.
-    return slot === '04:00 PM' || slot === '05:00 PM';
+    // Saturday open 8:00 AM - 4:00 PM. 05:00 PM slot closed.
+    return slot === '05:00 PM';
   }
-  return false;
+  // Mon, Tue, Wed, Fri open 9:00 AM - 5:00 PM. 08:00 AM slot closed.
+  return slot === '08:00 AM';
 }
 
 export function getFirstAvailableSlot(doctor: string, dateStr: string): string | null {
-  if (!dateStr || isSunday(dateStr) || isPastDate(dateStr)) return null;
+  if (!dateStr || isClosedDay(dateStr) || isPastDate(dateStr)) return null;
 
   for (const slot of TIME_SLOTS) {
     const isClosed = isSlotClosedForDay(dateStr, slot);

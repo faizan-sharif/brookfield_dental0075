@@ -22,7 +22,7 @@ import {
   isSlotBooked,
   BookingRecord,
   getTodayDateString,
-  isSunday,
+  isClosedDay,
   isPastDate,
   isSlotClosedForDay,
   getFirstAvailableSlot,
@@ -48,8 +48,8 @@ export default function ContactPage() {
 
   const handleDateChange = (newDate: string) => {
     setErrorMsg('');
-    if (isSunday(newDate)) {
-      setErrorMsg('The clinic is CLOSED on Sundays. Please select Monday to Saturday.');
+    if (isClosedDay(newDate)) {
+      setErrorMsg('The clinic is CLOSED on Thursdays and Sundays. Please select an open working day.');
     } else if (isPastDate(newDate)) {
       setErrorMsg('Selected date is in the past. Please select today or a future date.');
     }
@@ -80,8 +80,8 @@ export default function ContactPage() {
       return;
     }
 
-    if (isSunday(formData.preferredDate)) {
-      setErrorMsg('The clinic is CLOSED on Sundays. Please select Monday to Saturday.');
+    if (isClosedDay(formData.preferredDate)) {
+      setErrorMsg('The clinic is CLOSED on Thursdays and Sundays. Please select an open working day.');
       return;
     }
 
@@ -202,18 +202,14 @@ export default function ContactPage() {
                 Clinic Hours
               </span>
               <div className="space-y-1 text-xs">
-                <div className="flex justify-between">
-                  <span className="text-slate-500 font-medium">Mon–Fri:</span>
-                  <span className="font-bold text-navy-900">8:00 AM – 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500 font-medium">Saturday:</span>
-                  <span className="font-bold text-navy-900">9:00 AM – 3:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500 font-medium">Sunday:</span>
-                  <span className="font-bold text-rose-500">CLOSED</span>
-                </div>
+                {siteConfig.hours.map((h, i) => (
+                  <div key={i} className="flex justify-between">
+                    <span className="text-slate-500 font-medium">{h.days}:</span>
+                    <span className={`font-bold ${h.time === 'CLOSED' ? 'text-rose-500' : 'text-navy-900'}`}>
+                      {h.time}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

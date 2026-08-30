@@ -32,14 +32,16 @@ export function getAIAssistantResponse(query: string): string {
     q.includes('time') ||
     q.includes('schedule') ||
     q.includes('sunday') ||
+    q.includes('thursday') ||
     q.includes('saturday') ||
     q.includes('closed') ||
     q.includes('weekend')
   ) {
     return (
-      `📅 Our Office Hours:\n` +
-      `• Monday – Friday: 8:00 AM – 6:00 PM\n` +
-      `• Saturday: 9:00 AM – 3:00 PM\n` +
+      `📅 Our Official Office Hours:\n` +
+      `• Mon, Tue, Wed, Fri: 9:00 AM – 5:00 PM\n` +
+      `• Thursday: CLOSED\n` +
+      `• Saturday: 8:00 AM – 4:00 PM\n` +
       `• Sunday: CLOSED\n\n` +
       `Emergency walk-ins are welcomed during open business hours!`
     );
