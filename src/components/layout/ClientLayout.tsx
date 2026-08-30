@@ -5,6 +5,7 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { AppointmentModal } from '../ui/AppointmentModal';
 import { ChatWidget } from '../ui/ChatWidget';
+import { ToothCursor } from '../ui/ToothCursor';
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -35,6 +36,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
         preselectedDate={selectedDate}
       />
       <ChatWidget />
+      <ToothCursor />
     </div>
   );
 }
