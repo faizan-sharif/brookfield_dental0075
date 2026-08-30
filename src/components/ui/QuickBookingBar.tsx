@@ -4,14 +4,16 @@ import React, { useState } from 'react';
 import { Calendar, User, Stethoscope, ArrowRight } from 'lucide-react';
 import { teamData } from '@/data/team';
 import { servicesData } from '@/data/services';
+import { getTodayDateString } from '@/lib/bookingStore';
 
 interface QuickBookingBarProps {
   onBook: (details: { doctor: string; date: string; service: string }) => void;
 }
 
 export function QuickBookingBar({ onBook }: QuickBookingBarProps) {
+  const todayStr = getTodayDateString();
   const [doctor, setDoctor] = useState('Dr. Maqsood A. Chaudhry');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(todayStr);
   const [service, setService] = useState('Free Oral Consultation');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -53,6 +55,7 @@ export function QuickBookingBar({ onBook }: QuickBookingBarProps) {
             <input
               type="date"
               required
+              min={todayStr}
               value={date}
               onChange={(e) => setDate(e.target.value)}
               className="w-full bg-transparent text-xs font-bold text-slate-800 focus:outline-none cursor-pointer"

@@ -5,7 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, Clock, User, Phone, Mail, CheckCircle, Sparkles, AlertCircle } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import { teamData } from '@/data/team';
-import { saveBooking, isSlotBooked, BookingRecord } from '@/lib/bookingStore';
+import {
+  saveBooking,
+  isSlotBooked,
+  BookingRecord,
+  getTodayDateString,
+  isSunday,
+  isPastDate,
+  isSlotClosedForDay,
+  getFirstAvailableSlot,
+} from '@/lib/bookingStore';
 import { TimeSlotPicker } from './TimeSlotPicker';
 
 interface AppointmentModalProps {
@@ -27,26 +36,64 @@ export function AppointmentModal({
   const [errorMsg, setErrorMsg] = useState('');
   const [createdRecord, setCreatedRecord] = useState<BookingRecord | null>(null);
 
+  const todayStr = getTodayDateString();
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     service: preselectedService || 'Free Oral Consultation',
     doctor: preselectedDoctor || 'Dr. Maqsood A. Chaudhry',
-    preferredDate: preselectedDate || '',
+    preferredDate: preselectedDate || todayStr,
     timeSlot: '10:00 AM',
     notes: '',
   });
 
+  // Auto-find first available slot when doctor, date, or modal visibility changes
   useEffect(() => {
+    const targetDate = preselectedDate || formData.preferredDate || todayStr;
+    const targetDoctor = preselectedDoctor || formData.doctor;
+
+    const availableSlot = getFirstAvailableSlot(targetDoctor, targetDate) || '10:00 AM';
+
     setFormData((prev) => ({
       ...prev,
       service: preselectedService || prev.service,
-      doctor: preselectedDoctor || prev.doctor,
-      preferredDate: preselectedDate || prev.preferredDate,
+      doctor: targetDoctor,
+      preferredDate: targetDate,
+      timeSlot: availableSlot,
     }));
     setErrorMsg('');
   }, [preselectedService, preselectedDoctor, preselectedDate, isOpen]);
+
+  // When date changes manually in modal
+  const handleDateChange = (newDate: string) => {
+    setErrorMsg('');
+
+    if (isSunday(newDate)) {
+      setErrorMsg('The clinic is CLOSED on Sundays. Please select Monday to Saturday.');
+    } else if (isPastDate(newDate)) {
+      setErrorMsg('Selected date is in the past. Please select today or a future date.');
+    }
+
+    const nextAvailableSlot = getFirstAvailableSlot(formData.doctor, newDate) || '10:00 AM';
+    setFormData((prev) => ({
+      ...prev,
+      preferredDate: newDate,
+      timeSlot: nextAvailableSlot,
+    }));
+  };
+
+  // When doctor changes manually in modal
+  const handleDoctorChange = (newDoctor: string) => {
+    setErrorMsg('');
+    const nextAvailableSlot = getFirstAvailableSlot(newDoctor, formData.preferredDate) || '10:00 AM';
+    setFormData((prev) => ({
+      ...prev,
+      doctor: newDoctor,
+      timeSlot: nextAvailableSlot,
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,6 +101,21 @@ export function AppointmentModal({
 
     if (!formData.preferredDate) {
       setErrorMsg('Please select an appointment date.');
+      return;
+    }
+
+    if (isSunday(formData.preferredDate)) {
+      setErrorMsg('The clinic is CLOSED on Sundays. Please select Monday to Saturday.');
+      return;
+    }
+
+    if (isPastDate(formData.preferredDate)) {
+      setErrorMsg('Selected date is in the past. Please select today or a future date.');
+      return;
+    }
+
+    if (isSlotClosedForDay(formData.preferredDate, formData.timeSlot)) {
+      setErrorMsg(`The clinic is closed at ${formData.timeSlot} on ${formData.preferredDate}. Please select an open time slot.`);
       return;
     }
 
@@ -219,8 +281,8 @@ export function AppointmentModal({
                       </label>
                       <select
                         value={formData.doctor}
-                        onChange={(e) => setFormData({ ...formData, doctor: e.target.value })}
-                        className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-navy-900 focus:outline-none focus:border-brand-500"
+                        onChange={(e) => handleDoctorChange(e.target.value)}
+                        className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-navy-900 focus:outline-none focus:border-brand-500 cursor-pointer"
                       >
                         {teamData.map((doc) => (
                           <option key={doc.name} value={doc.name}>
@@ -239,9 +301,10 @@ export function AppointmentModal({
                         <input
                           type="date"
                           required
+                          min={todayStr}
                           value={formData.preferredDate}
-                          onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                          className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-navy-900 focus:outline-none focus:border-brand-500"
+                          onChange={(e) => handleDateChange(e.target.value)}
+                          className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-navy-900 focus:outline-none focus:border-brand-500 cursor-pointer"
                         />
                       </div>
                     </div>

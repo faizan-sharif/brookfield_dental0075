@@ -100,6 +100,53 @@ export function saveBooking(newBooking: Omit<BookingRecord, 'id' | 'status' | 'c
   return record;
 }
 
+export function getTodayDateString(): string {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+export function isSunday(dateStr: string): boolean {
+  if (!dateStr) return false;
+  const d = new Date(`${dateStr}T00:00:00`);
+  return d.getDay() === 0;
+}
+
+export function isSaturday(dateStr: string): boolean {
+  if (!dateStr) return false;
+  const d = new Date(`${dateStr}T00:00:00`);
+  return d.getDay() === 6;
+}
+
+export function isPastDate(dateStr: string): boolean {
+  if (!dateStr) return false;
+  return dateStr < getTodayDateString();
+}
+
+export function isSlotClosedForDay(dateStr: string, slot: string): boolean {
+  if (isSunday(dateStr)) return true; // Sunday closed
+  if (isSaturday(dateStr)) {
+    // Saturday open 9 AM - 3 PM. 4 PM and 5 PM slots closed.
+    return slot === '04:00 PM' || slot === '05:00 PM';
+  }
+  return false;
+}
+
+export function getFirstAvailableSlot(doctor: string, dateStr: string): string | null {
+  if (!dateStr || isSunday(dateStr) || isPastDate(dateStr)) return null;
+
+  for (const slot of TIME_SLOTS) {
+    const isClosed = isSlotClosedForDay(dateStr, slot);
+    const isBooked = isSlotBooked(doctor, dateStr, slot);
+    if (!isClosed && !isBooked) {
+      return slot;
+    }
+  }
+  return null;
+}
+
 export function isSlotBooked(doctor: string, date: string, timeSlot: string): boolean {
   const bookings = getStoredBookings();
   return bookings.some(
