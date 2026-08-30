@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export function ToothCursor() {
@@ -9,13 +8,48 @@ export function ToothCursor() {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [toothSrc, setToothSrc] = useState<string | null>(null);
 
   useEffect(() => {
-    // Only enable on devices with a mouse/fine pointer
+    // Enable custom cursor only on fine pointer devices (mouse)
     const mediaQuery = window.matchMedia('(pointer: fine)');
     if (!mediaQuery.matches) return;
 
     setIsVisible(true);
+
+    // Process realistic_tooth.jpg to remove black background and produce 100% transparent PNG
+    const img = new window.Image();
+    img.crossOrigin = 'anonymous';
+    img.src = '/images/realistic_tooth.jpg';
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      ctx.drawImage(img, 0, 0);
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imgData.data;
+
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const brightness = (r + g + b) / 3;
+
+        // Dark background threshold
+        if (brightness < 45) {
+          data[i + 3] = 0; // 100% Transparent
+        } else if (brightness < 80) {
+          // Feathered alpha edge
+          data[i + 3] = Math.floor(((brightness - 45) / 35) * 255);
+        }
+      }
+
+      ctx.putImageData(imgData, 0, 0);
+      setToothSrc(canvas.toDataURL('image/png'));
+    };
 
     const updateMouse = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -54,41 +88,44 @@ export function ToothCursor() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-      {/* Subtle Cyan Glow Aura Follower */}
-      <motion.div
-        animate={{
-          x: position.x - 18,
-          y: position.y - 18,
-          scale: isClicking ? 0.8 : isHovered ? 1.4 : 1,
-          opacity: isHovered ? 0.8 : 0.4,
-        }}
-        transition={{ type: 'spring', damping: 25, stiffness: 300, mass: 0.1 }}
-        className="fixed top-0 left-0 w-9 h-9 rounded-full bg-cyan-400/30 blur-md pointer-events-none"
-      />
-
-      {/* Photorealistic 3D Tooth Custom Cursor (Transparent Background) */}
+    <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
+      {/* Subtle Cyan Glow Trail Behind Cursor */}
       <motion.div
         animate={{
           x: position.x - 14,
           y: position.y - 14,
-          scale: isClicking ? 0.85 : isHovered ? 1.35 : 1,
-          rotate: isHovered ? 12 : 0,
+          scale: isClicking ? 0.75 : isHovered ? 1.5 : 1,
+          opacity: isHovered ? 0.9 : 0.45,
         }}
-        transition={{ type: 'spring', damping: 20, stiffness: 350, mass: 0.15 }}
-        className="fixed top-0 left-0 w-8 h-8 pointer-events-none select-none flex items-center justify-center"
-        style={{
-          mixBlendMode: 'screen', // Seamless transparent background!
+        transition={{ type: 'spring', damping: 28, stiffness: 350, mass: 0.1 }}
+        className="fixed top-0 left-0 w-8 h-8 rounded-full bg-cyan-400/35 blur-md pointer-events-none"
+      />
+
+      {/* 100% Transparent 3D Tooth Custom Mouse Cursor */}
+      <motion.div
+        animate={{
+          x: position.x - 16,
+          y: position.y - 16,
+          scale: isClicking ? 0.8 : isHovered ? 1.4 : 1,
+          rotate: isHovered ? 15 : 0,
         }}
+        transition={{ type: 'spring', damping: 18, stiffness: 380, mass: 0.12 }}
+        className="fixed top-0 left-0 w-9 h-9 pointer-events-none select-none flex items-center justify-center"
       >
-        <Image
-          src="/images/realistic_tooth.jpg"
-          alt="Tooth Cursor"
-          width={36}
-          height={36}
-          priority
-          className="object-contain filter drop-shadow-[0_6px_16px_rgba(6,182,212,0.85)] pointer-events-none"
-        />
+        {toothSrc ? (
+          <img
+            src={toothSrc}
+            alt="Tooth Cursor"
+            className="w-full h-full object-contain filter drop-shadow-[0_5px_12px_rgba(6,182,212,0.8)] pointer-events-none"
+          />
+        ) : (
+          <img
+            src="/images/realistic_tooth.jpg"
+            alt="Tooth Cursor"
+            className="w-full h-full object-contain filter drop-shadow-[0_5px_12px_rgba(6,182,212,0.8)] pointer-events-none"
+            style={{ mixBlendMode: 'screen' }}
+          />
+        )}
       </motion.div>
     </div>
   );

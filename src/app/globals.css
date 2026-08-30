@@ -8,6 +8,12 @@
     --foreground: 222.2 84% 4.9%;
   }
 
+  @media (pointer: fine) {
+    html, body, a, button, input, select, textarea {
+      cursor: none !important;
+    }
+  }
+
   body {
     background-color: #f4f9fc;
     color: #0a2540;

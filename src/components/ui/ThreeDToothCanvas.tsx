@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 interface ThreeDToothCanvasProps {
@@ -17,9 +16,42 @@ export function ThreeDToothCanvas({
 }: ThreeDToothCanvasProps) {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
+  const [toothSrc, setToothSrc] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Process realistic_tooth.jpg to remove black background dynamically
+    const img = new window.Image();
+    img.crossOrigin = 'anonymous';
+    img.src = '/images/realistic_tooth.jpg';
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      ctx.drawImage(img, 0, 0);
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imgData.data;
+
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const brightness = (r + g + b) / 3;
+
+        if (brightness < 45) {
+          data[i + 3] = 0; // 100% Transparent
+        } else if (brightness < 80) {
+          data[i + 3] = Math.floor(((brightness - 45) / 35) * 255);
+        }
+      }
+
+      ctx.putImageData(imgData, 0, 0);
+      setToothSrc(canvas.toDataURL('image/png'));
+    };
+
     let animationFrameId: number;
     let startTime = Date.now();
 
@@ -58,7 +90,7 @@ export function ThreeDToothCanvas({
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative flex items-center justify-center cursor-grab active:cursor-grabbing select-none overflow-visible ${className}`}
+      className={`relative flex items-center justify-center select-none overflow-visible ${className}`}
       style={{ perspective: 1000 }}
     >
       {/* 3D Floating Realistic Tooth Container */}
@@ -74,18 +106,22 @@ export function ThreeDToothCanvas({
         {/* Floating Isolated Photorealistic 3D Tooth */}
         <div
           className="relative w-full h-full transition-transform duration-300 hover:scale-110 flex items-center justify-center"
-          style={{
-            transform: 'translateZ(25px)',
-            mixBlendMode: 'screen', // Seamless background removal!
-          }}
+          style={{ transform: 'translateZ(25px)' }}
         >
-          <Image
-            src="/images/realistic_tooth.jpg"
-            alt="Photorealistic 3D Tooth"
-            fill
-            priority
-            className="object-contain filter drop-shadow-[0_8px_20px_rgba(20,184,166,0.7)]"
-          />
+          {toothSrc ? (
+            <img
+              src={toothSrc}
+              alt="Photorealistic 3D Tooth"
+              className="w-full h-full object-contain filter drop-shadow-[0_8px_20px_rgba(20,184,166,0.7)] pointer-events-none"
+            />
+          ) : (
+            <img
+              src="/images/realistic_tooth.jpg"
+              alt="Photorealistic 3D Tooth"
+              className="w-full h-full object-contain filter drop-shadow-[0_8px_20px_rgba(20,184,166,0.7)] pointer-events-none"
+              style={{ mixBlendMode: 'screen' }}
+            />
+          )}
         </div>
       </motion.div>
 

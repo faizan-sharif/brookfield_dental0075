@@ -152,8 +152,8 @@ export function ChatWidget() {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-3.5 py-2.5 bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white rounded-full shadow-glow-teal border border-brand-300/30 cursor-pointer"
       >
-        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-navy-950 border border-white/30 shadow-[0_4px_12px_rgba(0,0,0,0.4)] flex items-center justify-center shrink-0 overflow-hidden p-0.5 pointer-events-none">
-          <ThreeDToothCanvas className="w-full h-full scale-110" autoRotate={true} showBadge={false} />
+        <div className="w-7 h-7 sm:w-8 sm:h-8 relative flex items-center justify-center shrink-0 pointer-events-none">
+          <ThreeDToothCanvas className="w-9 h-9 sm:w-10 sm:h-10" autoRotate={true} showBadge={false} />
         </div>
         <span className="text-sm font-semibold hidden sm:inline">Ask AI Assistant</span>
         <span className="w-2.5 h-2.5 rounded-full bg-emerald-300 animate-pulse" />
