@@ -27,7 +27,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'Pricing', href: '/promotions' },
+    { name: 'Contact', href: '/contact' },
     { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },
   ];
