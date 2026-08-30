@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { teamData } from '@/data/team';
 import { TeamCard } from '@/components/ui/TeamCard';
 import { DoctorProfile } from '@/components/sections/DoctorProfile';
+import { CraftingSmilesBanner } from '@/components/sections/CraftingSmilesBanner';
 import { AppointmentModal } from '@/components/ui/AppointmentModal';
 
 export default function AboutPage() {
@@ -46,6 +47,9 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+
+      {/* Crafting Stunning Smiles Since 2006 Banner */}
+      <CraftingSmilesBanner />
 
       <AppointmentModal
         isOpen={modalOpen}
