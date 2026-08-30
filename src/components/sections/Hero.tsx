@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Calendar, Phone, ShieldCheck } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import { QuickBookingBar } from '../ui/QuickBookingBar';
@@ -11,9 +11,42 @@ interface HeroProps {
   onOpenBooking: (details?: { service?: string; doctor?: string; date?: string }) => void;
 }
 
+const HERO_IMAGES = [
+  {
+    url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop',
+    alt: 'Modern Dental Office & Equipment',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop',
+    alt: 'Professional Dental Care & Consultation',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=800&auto=format&fit=crop',
+    alt: 'Patient Smile & Dental Hygiene',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop',
+    alt: 'State of the Art Dental Clinic',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=800&auto=format&fit=crop',
+    alt: 'Expert Dentist Team',
+  },
+];
+
 export function Hero({ onOpenBooking }: HeroProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative pt-36 pb-20 md:pt-40 md:pb-24 overflow-hidden bg-gradient-to-b from-ice-100 via-white to-ice-50">
+    <section className="relative pt-36 sm:pt-40 lg:pt-44 pb-16 md:pb-20 overflow-hidden bg-gradient-to-b from-ice-100 via-white to-ice-50">
       {/* Background Orbs */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -48,22 +81,47 @@ export function Hero({ onOpenBooking }: HeroProps) {
             </div>
           </div>
 
-          {/* Right Column: Clean Hero Patient Visual */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative w-full h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-white">
-              <Image
-                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop"
-                alt="Patient smiling at dentist"
-                fill
-                priority
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent" />
+          {/* Right Column: Dynamic Auto-Rotating Hero Visual */}
+          <div className="lg:col-span-6 relative flex justify-center lg:justify-end -mt-4 lg:-mt-10">
+            <div className="relative w-full max-w-xl h-[360px] sm:h-[400px] lg:h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6, ease: 'easeInOut' }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={HERO_IMAGES[currentIndex].url}
+                    alt={HERO_IMAGES[currentIndex].alt}
+                    fill
+                    priority
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent" />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Carousel Indicators / Dots */}
+              <div className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
+                {HERO_IMAGES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      idx === currentIndex ? 'bg-cyan-400 w-4' : 'bg-white/60 hover:bg-white w-1.5'
+                    }`}
+                    aria-label={`Go to image ${idx + 1}`}
+                  />
+                ))}
+              </div>
 
               {/* Floating Free Consult Badge */}
-              <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-white/80 flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-cyan-gradient text-white flex items-center justify-center font-bold">
-                  <ShieldCheck className="w-5 h-5" />
+              <div className="absolute bottom-4 left-4 z-20 bg-white/95 backdrop-blur-md p-3 rounded-xl shadow-lg border border-white/80 flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-cyan-gradient text-white flex items-center justify-center font-bold">
+                  <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="block text-xs font-bold text-navy-900">Free Consultation</span>
@@ -82,3 +140,4 @@ export function Hero({ onOpenBooking }: HeroProps) {
     </section>
   );
 }
+

@@ -63,7 +63,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
             <img
               src="/images/logo_hd.png"
               alt="Brookfield Dental Associates"
-              className="h-20 sm:h-24 md:h-28 w-auto object-contain transition-transform group-hover:scale-105 py-1"
+              className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-105 py-0.5"
             />
           </Link>
 
