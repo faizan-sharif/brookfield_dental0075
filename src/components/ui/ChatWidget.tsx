@@ -2,8 +2,9 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Sparkles, Phone, Calendar } from 'lucide-react';
+import { X, Send, Sparkles, Phone, Calendar } from 'lucide-react';
 import { siteConfig } from '@/data/site';
+import { ThreeDToothCanvas } from './ThreeDToothCanvas';
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -149,9 +150,11 @@ export function ChatWidget() {
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2.5 px-4 py-3 bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white rounded-full shadow-glow-teal border border-brand-300/30 cursor-pointer"
+        className="flex items-center gap-2 px-3.5 py-2.5 bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white rounded-full shadow-glow-teal border border-brand-300/30 cursor-pointer"
       >
-        <MessageCircle className="w-6 h-6 fill-current text-white" />
+        <div className="w-7 h-7 sm:w-8 sm:h-8 relative flex items-center justify-center shrink-0 pointer-events-none">
+          <ThreeDToothCanvas className="w-9 h-9 sm:w-10 sm:h-10" autoRotate={true} showBadge={false} />
+        </div>
         <span className="text-sm font-semibold hidden sm:inline">Ask AI Assistant</span>
         <span className="w-2.5 h-2.5 rounded-full bg-emerald-300 animate-pulse" />
       </motion.button>

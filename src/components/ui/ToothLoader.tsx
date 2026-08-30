@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import { ThreeDToothCanvas } from './ThreeDToothCanvas';
 
 export function ToothLoader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -53,27 +53,14 @@ export function ToothLoader() {
             className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full glass-card-dark border-white/20 shadow-glow-teal flex items-center justify-center overflow-hidden mb-8"
           >
             {/* Pulsing Energy Ring */}
-            <div className="absolute inset-2 rounded-full border border-brand-400/30 animate-ping opacity-30" />
+            <div className="absolute inset-2 rounded-full border border-brand-400/30 animate-ping opacity-30 pointer-events-none" />
             
-            {/* Transparent Floating 3D Tooth */}
-            <motion.div
-              animate={{ rotateY: 360, y: [0, -8, 0] }}
-              transition={{ rotateY: { duration: 8, repeat: Infinity, ease: 'linear' }, y: { duration: 3, repeat: Infinity, ease: 'easeInOut' } }}
-              className="relative w-48 h-48 sm:w-60 sm:h-60 drop-shadow-[0_15px_30px_rgba(20,184,166,0.6)]"
-              style={{ mixBlendMode: 'screen' }}
-            >
-              <Image
-                src="/images/realistic_tooth.jpg"
-                alt="Seamless 3D Tooth"
-                fill
-                priority
-                className="object-contain"
-              />
-            </motion.div>
+            {/* Interactive 3D WebGL Tooth Canvas */}
+            <ThreeDToothCanvas className="w-full h-full" autoRotate={true} />
 
             {/* Glowing Accent Badge */}
-            <div className="absolute bottom-4 px-4 py-1 rounded-full glass-badge text-[11px] font-bold text-brand-300 flex items-center gap-1.5 shadow-md">
-              <Sparkles className="w-3.5 h-3.5 text-brand-400" /> Photorealistic 3D Dental Tech
+            <div className="absolute bottom-3 px-3.5 py-1 rounded-full glass-badge text-[10px] font-bold text-brand-300 flex items-center gap-1.5 shadow-md pointer-events-none z-10">
+              <Sparkles className="w-3.5 h-3.5 text-brand-400" /> Interactive 3D Dental Tech
             </div>
           </motion.div>
 
