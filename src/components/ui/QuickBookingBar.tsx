@@ -89,10 +89,9 @@ export function QuickBookingBar({ onBook }: QuickBookingBarProps) {
         <div className="lg:col-span-3">
           <button
             type="submit"
-            className="w-full py-3.5 px-6 btn-cyan flex items-center justify-center gap-2 text-sm font-bold shadow-cyan cursor-pointer"
+            className="w-full py-3.5 px-6 btn-cyan flex items-center justify-center text-sm font-bold shadow-cyan cursor-pointer"
           >
             <span>Book Now</span>
-            <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </form>
