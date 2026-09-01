@@ -18,14 +18,11 @@ import {
   Award,
 } from 'lucide-react';
 import {
-  servicesData,
-  serviceGroups,
   liveProblemCards,
   digitalXrayBenefits,
   digitalXrayImportance,
   ourPromises,
 } from '@/data/services';
-import { ServiceCard } from '@/components/ui/ServiceCard';
 import { AppointmentModal } from '@/components/ui/AppointmentModal';
 import { siteConfig } from '@/data/site';
 
@@ -41,14 +38,8 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export default function ServicesPage() {
-  const [activeGroup, setActiveGroup] = useState('all');
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('');
-
-  const filteredServices =
-    activeGroup === 'all'
-      ? servicesData
-      : servicesData.filter((s) => s.category === activeGroup);
 
   const handleBook = (serviceName?: string) => {
     setSelectedService(serviceName || 'Consultation');
@@ -166,44 +157,6 @@ export default function ServicesPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Full Spectrum Treatment Filter Catalog */}
-      <section className="py-20 bg-white border-t border-slate-200/70">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-black uppercase tracking-widest text-cyan-500 block mb-2">
-              SPECIALIZED PROCEDURES
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight">
-              Explore Our Comprehensive Procedures
-            </h2>
-          </div>
-
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-            {serviceGroups.map((grp) => (
-              <button
-                key={grp.id}
-                onClick={() => setActiveGroup(grp.id)}
-                className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  activeGroup === grp.id
-                    ? 'bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-md shadow-brand-500/20'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
-                }`}
-              >
-                {grp.name}
-              </button>
-            ))}
-          </div>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredServices.map((service) => (
-              <ServiceCard key={service.id} service={service} onBookClick={handleBook} />
-            ))}
           </div>
         </div>
       </section>
