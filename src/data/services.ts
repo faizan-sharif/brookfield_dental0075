@@ -9,11 +9,91 @@ export interface ServiceItem {
   popular?: boolean;
 }
 
+export interface ProblemItem {
+  title: string;
+  description: string;
+  iconName: string;
+  serviceKey: string;
+}
+
+export const liveProblemCards: ProblemItem[] = [
+  {
+    title: 'Tooth Pain',
+    description: 'Tooth pain can be caused by various problems. Oral examination can help determine the cause.',
+    iconName: 'Activity',
+    serviceKey: 'Tooth Pain Relief',
+  },
+  {
+    title: 'Dental Anxiety',
+    description: 'Offer a wide range of services to help you overcome your fear and finally enjoy good oral health.',
+    iconName: 'Heart',
+    serviceKey: 'Sedation Dentistry',
+  },
+  {
+    title: 'Broken or Chipped Tooth',
+    description: 'Chipped teeth can be treated either by cosmetic bonding or porcelain restoration.',
+    iconName: 'Sparkles',
+    serviceKey: 'Tooth Repair & Restoration',
+  },
+  {
+    title: 'Periodontal Disease',
+    description: 'Variety of periodontal treatments, customized for your specific health needs.',
+    iconName: 'ShieldCheck',
+    serviceKey: 'Periodontal Therapy',
+  },
+  {
+    title: 'Uneven Teeth',
+    description: 'A state of the art solution of straightening your teeth through invisible dental braces.',
+    iconName: 'Smile',
+    serviceKey: 'Invisalign & Clear Braces',
+  },
+  {
+    title: 'Cavities & Decay',
+    description: 'Using modern technology to detect decay in the early stages, to help save and preserve your teeth.',
+    iconName: 'Zap',
+    serviceKey: 'Cavity Treatment & Fillings',
+  },
+  {
+    title: 'Tooth Stains',
+    description: 'Whitening procedures to brighten your teeth and return the smile to your face.',
+    iconName: 'Sun',
+    serviceKey: 'Teeth Whitening',
+  },
+  {
+    title: 'Missing Teeth',
+    description: 'Can restore your smile, as well as your speaking & eating ability with advanced prosthetics.',
+    iconName: 'Award',
+    serviceKey: 'Dental Implants & Prosthetics',
+  },
+];
+
+export const digitalXrayBenefits = [
+  'Exposes the patient to half the amount of radiation received from traditional x-rays',
+  'Gray-scale resolution of 256 colors compared to 16 – 25 shades on conventional film, allowing for a more detailed, accurate analysis',
+  'Immediately transfers images to monitor so that the dentist can review and explain the information to the patient',
+  'Images can be enlarged and saved for future reference',
+  'Offers the ability to compare your x-rays with one another digitally on our computer',
+  'Less time spent developing x-rays means more time to take care of your dental needs',
+];
+
+export const digitalXrayImportance = [
+  'To locate areas of decay that can’t be detected with a visual examination',
+  'To detect periodontal disease by investigating possible bone loss',
+  'To aid in the preparation and placement of dental implants, orthodontics and other dental work',
+  'To locate possible abnormalities such as cysts and oral cancer',
+];
+
+export const ourPromises = [
+  'Clear communication of treatment costs and financial arrangements to avoid surprises.',
+  'Offering sedation dentistry for anxious or nervous patients to ensure a comfortable experience.',
+  'Courteous and helpful front desk staff, dental assistants, and hygienists to create a positive patient experience.',
+];
+
 export const serviceGroups = [
-  { id: 'all', name: 'All Services' },
+  { id: 'all', name: 'All Procedures' },
   { id: 'implants', name: 'Dental Implants' },
   { id: 'cosmetic', name: 'Cosmetic Dentistry' },
-  { id: 'orthodontics', name: 'Orthodontic & Aligners' },
+  { id: 'orthodontics', name: 'Orthodontics & Aligners' },
   { id: 'general', name: 'General & Preventive' },
   { id: 'emergency', name: 'Emergency Care' },
 ];
@@ -113,32 +193,5 @@ export const servicesData: ServiceItem[] = [
     icon: 'Heart',
     image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop',
     features: ['Instant pain relief', 'Saves natural tooth structure', '98% success rate', 'Gentle micro-instruments'],
-  },
-];
-
-export const problemCards = [
-  {
-    problem: 'Missing One or More Teeth?',
-    solution: 'Single & Multi-Tooth Implants offer permanent strength and natural appearance.',
-    cta: 'Explore Implants',
-    link: '/implants',
-  },
-  {
-    problem: 'Stained or Yellowing Teeth?',
-    solution: 'Philips Zoom! In-Office Whitening gives you a brilliant smile in 45 minutes.',
-    cta: 'Claim $400 Special',
-    link: '/promotions',
-  },
-  {
-    problem: 'Crooked Teeth or Bite Issue?',
-    solution: 'ClearCorrect & Invisalign clear aligners straighten discreetly with no metal.',
-    cta: 'Free Consult',
-    link: '/contact',
-  },
-  {
-    problem: 'Severe Toothache or Trauma?',
-    solution: 'Same-day emergency dental appointments available immediately.',
-    cta: 'Call 703-913-1377',
-    link: 'tel:703-913-1377',
   },
 ];
