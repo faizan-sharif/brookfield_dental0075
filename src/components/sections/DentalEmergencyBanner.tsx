@@ -61,14 +61,14 @@ export function DentalEmergencyBanner({ onOpenBooking }: DentalEmergencyBannerPr
               {onOpenBooking ? (
                 <button
                   onClick={onOpenBooking}
-                  className="py-3 px-7 bg-cyan-400 hover:bg-cyan-500 text-white rounded-lg font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer inline-flex items-center justify-center"
+                  className="py-3.5 px-8 btn-navy text-white font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer inline-flex items-center justify-center rounded-full"
                 >
                   Contact Us Now
                 </button>
               ) : (
                 <Link
                   href="/contact"
-                  className="py-3 px-7 bg-cyan-400 hover:bg-cyan-500 text-white rounded-lg font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer inline-flex items-center justify-center"
+                  className="py-3.5 px-8 btn-navy text-white font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer inline-flex items-center justify-center rounded-full"
                 >
                   Contact Us Now
                 </Link>

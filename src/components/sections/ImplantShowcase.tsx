@@ -71,9 +71,9 @@ export function ImplantShowcase({ onOpenBooking }: ImplantShowcaseProps) {
               </div>
 
               <Button
-                variant="glass"
+                variant="primary"
                 size="sm"
-                className="w-full text-slate-900 font-semibold"
+                className="w-full font-bold"
                 onClick={onOpenBooking}
               >
                 Schedule Consult

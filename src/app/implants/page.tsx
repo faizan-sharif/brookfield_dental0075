@@ -26,13 +26,13 @@ export default function ImplantsPage() {
           Hundreds of implants placed by Dr. Maqsood A. Chaudhry DDS. High-durability titanium implants at 20% less than other offices.
         </p>
 
-        <div className="pt-6 flex justify-center gap-4">
+        <div className="pt-6 flex flex-wrap justify-center gap-4">
           <Button variant="primary" onClick={() => setModalOpen(true)}>
             Schedule Implant Consult
           </Button>
           <a href={`tel:${siteConfig.phonePrimary}`}>
-            <Button variant="glass" className="text-slate-900 font-semibold flex items-center justify-center gap-2">
-              <Phone className="w-4 h-4 text-brand-500 fill-current" />
+            <Button variant="primary" className="flex items-center justify-center gap-2">
+              <Phone className="w-4 h-4 text-brand-400 fill-current" />
               <span>{siteConfig.phonePrimary}</span>
             </Button>
           </a>

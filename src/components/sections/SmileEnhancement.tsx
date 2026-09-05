@@ -83,13 +83,13 @@ export function SmileEnhancement({ onOpenBooking }: SmileEnhancementProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 via-transparent to-transparent" />
 
-              {/* Floating Cyan Phone Help Badge */}
+              {/* Floating Navy Phone Help Badge */}
               <div className="absolute bottom-6 right-6">
                 <a
                   href={`tel:${siteConfig.phonePrimary}`}
-                  className="py-2.5 px-5 bg-brand-500 hover:bg-brand-600 text-white rounded-full font-extrabold text-xs shadow-xl flex items-center gap-2 transition-all"
+                  className="py-2.5 px-5 btn-navy text-white rounded-full font-extrabold text-xs shadow-xl flex items-center gap-2 transition-all border border-white/20"
                 >
-                  <Phone className="w-3.5 h-3.5" />
+                  <Phone className="w-3.5 h-3.5 text-brand-400" />
                   <span>Need help? {siteConfig.phonePrimary}</span>
                 </a>
               </div>

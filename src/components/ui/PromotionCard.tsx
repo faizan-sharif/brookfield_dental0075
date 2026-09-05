@@ -51,13 +51,13 @@ export function PromotionCard({ promo, onClaimClick }: PromotionCardProps) {
         </p>
       </div>
 
-      {/* Bright Cyan Pill Button */}
+      {/* Solid Navy Pill Button */}
       <button
         onClick={(e) => {
           e.stopPropagation();
           onClaimClick(promo.title);
         }}
-        className="w-full py-2.5 px-4 rounded-full font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all bg-brand-500 hover:bg-brand-400 text-white shadow-md hover:shadow-lg cursor-pointer"
+        className="w-full py-2.5 px-4 rounded-full font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all btn-navy text-white shadow-md hover:shadow-lg cursor-pointer"
       >
         <span>Claim offer</span>
         <ArrowRight className="w-3.5 h-3.5" />

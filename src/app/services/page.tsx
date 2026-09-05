@@ -96,7 +96,7 @@ export default function ServicesPage() {
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <a
                   href={`tel:${siteConfig.phonePrimary}`}
-                  className="py-3 px-6 bg-cyan-400 hover:bg-cyan-500 text-white rounded-xl font-bold text-sm shadow-md hover:shadow-lg flex items-center gap-2 transition-all cursor-pointer"
+                  className="py-3.5 px-8 btn-navy text-white rounded-full font-bold text-sm shadow-md hover:shadow-lg flex items-center gap-2 transition-all cursor-pointer"
                 >
                   <Phone className="w-4 h-4 fill-current" />
                   <span>{siteConfig.phonePrimary}</span>
@@ -104,9 +104,9 @@ export default function ServicesPage() {
 
                 <button
                   onClick={() => handleBook('Free Consultation')}
-                  className="py-3 px-6 bg-navy-900 hover:bg-navy-950 text-white rounded-xl font-bold text-sm shadow-md hover:shadow-lg flex items-center gap-2 transition-all cursor-pointer"
+                  className="py-3.5 px-8 btn-navy text-white rounded-full font-bold text-sm shadow-md hover:shadow-lg flex items-center gap-2 transition-all cursor-pointer"
                 >
-                  <Calendar className="w-4 h-4 text-cyan-400" />
+                  <Calendar className="w-4 h-4 text-brand-400" />
                   <span>Book Consultation</span>
                 </button>
               </div>
@@ -219,7 +219,7 @@ export default function ServicesPage() {
               <div className="pt-3">
                 <button
                   onClick={() => handleBook('Digital X-Ray Consultation')}
-                  className="py-3 px-7 bg-cyan-400 hover:bg-cyan-500 text-white rounded-xl font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
+                  className="py-3.5 px-8 btn-navy text-white rounded-full font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
                 >
                   Make an Appointment
                 </button>
@@ -260,7 +260,7 @@ export default function ServicesPage() {
               <div className="pt-3">
                 <button
                   onClick={() => handleBook('Digital Radiography Exam')}
-                  className="py-3 px-7 bg-cyan-400 hover:bg-cyan-500 text-white rounded-xl font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
+                  className="py-3.5 px-8 btn-navy text-white rounded-full font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
                 >
                   Make an Appointment
                 </button>
@@ -323,7 +323,7 @@ export default function ServicesPage() {
               <div className="pt-3">
                 <button
                   onClick={() => handleBook('Appointment with Our Team')}
-                  className="py-3 px-7 bg-cyan-400 hover:bg-cyan-500 text-white rounded-xl font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
+                  className="py-3.5 px-8 btn-navy text-white rounded-full font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
                 >
                   Make an Appointment
                 </button>
@@ -334,32 +334,32 @@ export default function ServicesPage() {
       </section>
 
       {/* 9. Contact Info / Need Consultation? Banner */}
-      <section className="py-20 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-navy-900 to-navy-950 text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 relative z-10">
-          <span className="text-xs font-black uppercase tracking-widest text-white/90 bg-white/20 px-3.5 py-1 rounded-full inline-block">
+          <span className="text-xs font-black uppercase tracking-widest text-brand-300 bg-brand-500/20 px-3.5 py-1 rounded-full border border-brand-400/30 inline-block">
             Contact Info
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
             Need Consultation?
           </h2>
-          <p className="text-sm sm:text-base font-semibold text-white/95">
+          <p className="text-sm sm:text-base font-semibold text-slate-300">
             Contact us now for free consultation
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={`tel:${siteConfig.phonePrimary}`}
-              className="w-full sm:w-auto py-3.5 px-8 bg-white text-navy-900 hover:bg-slate-100 rounded-full font-extrabold text-sm shadow-lg flex items-center justify-center gap-2 transition-all"
+              className="w-full sm:w-auto py-3.5 px-8 btn-navy text-white rounded-full font-extrabold text-sm shadow-lg flex items-center justify-center gap-2 transition-all border border-white/20"
             >
-              <Phone className="w-4 h-4 text-cyan-500 fill-current" />
+              <Phone className="w-4 h-4 text-brand-400 fill-current" />
               <span>{siteConfig.phonePrimary}</span>
             </a>
 
             <button
               onClick={() => handleBook('Free Consultation')}
-              className="w-full sm:w-auto py-3.5 px-8 bg-navy-900 hover:bg-navy-950 text-white rounded-full font-extrabold text-sm shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full sm:w-auto py-3.5 px-8 btn-navy text-white rounded-full font-extrabold text-sm shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer border border-white/20"
             >
-              <Calendar className="w-4 h-4 text-cyan-400" />
+              <Calendar className="w-4 h-4 text-brand-400" />
               <span>Make an Appointment</span>
             </button>
           </div>

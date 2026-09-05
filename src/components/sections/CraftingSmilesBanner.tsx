@@ -49,7 +49,7 @@ export function CraftingSmilesBanner() {
             {/* Phone Action Button matching screenshot */}
             <div className="pt-2">
               <a href={`tel:${siteConfig.phonePrimary}`}>
-                <button className="py-3 px-6 bg-cyan-400 hover:bg-cyan-500 text-white rounded-xl font-bold text-sm shadow-md hover:shadow-lg flex items-center gap-2 transition-all cursor-pointer">
+                <button className="py-3.5 px-8 btn-navy text-white rounded-full font-bold text-sm shadow-md hover:shadow-lg flex items-center gap-2 transition-all cursor-pointer">
                   <Phone className="w-4 h-4 fill-current" />
                   <span>{siteConfig.phonePrimary}</span>
                 </button>

@@ -26,13 +26,13 @@ export function Button({
 
   const variantClasses = {
     primary:
-      'bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white shadow-lg shadow-brand-500/25 border border-brand-400/30',
+      'bg-navy-900 hover:bg-navy-950 text-white shadow-lg shadow-navy-900/20 border border-slate-700/40 rounded-full font-bold',
     secondary:
-      'bg-navy-900 hover:bg-navy-800 text-white shadow-lg shadow-navy-900/20 border border-slate-700/50',
+      'bg-navy-900 hover:bg-navy-950 text-white shadow-lg shadow-navy-900/20 border border-slate-700/50 rounded-full font-bold',
     glass:
-      'bg-white/80 hover:bg-white backdrop-blur-md text-brand-700 border border-white/80 shadow-md hover:shadow-xl',
+      'bg-navy-900 hover:bg-navy-950 text-white shadow-md hover:shadow-xl border border-navy-800 rounded-full font-bold',
     outline:
-      'border-2 border-brand-500 text-brand-600 hover:bg-brand-50/80 backdrop-blur-sm',
+      'border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white rounded-full font-bold backdrop-blur-sm',
   };
 
   return (

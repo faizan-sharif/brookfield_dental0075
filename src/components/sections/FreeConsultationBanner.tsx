@@ -41,7 +41,7 @@ export function FreeConsultationBanner() {
             <div className="pt-2">
               <a
                 href={`tel:${siteConfig.phonePrimary}`}
-                className="inline-flex items-center gap-2 py-2.5 px-6 bg-[#00BCD4] hover:bg-[#00ACC1] text-white rounded-md font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 py-3 px-8 btn-navy text-white rounded-full font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
               >
                 <Phone className="w-4 h-4 fill-current" />
                 <span>{siteConfig.phonePrimary}</span>
