@@ -35,14 +35,14 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-40">
       {/* Top Thin Navy Bar matching screenshot (Left: Location, Right: Phone Number) */}
-      <div className="bg-navy-900 text-white text-xs py-2 px-4 border-b border-navy-800">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-[11px] text-slate-300 font-medium">
+      <div className="bg-navy-900 text-white text-xs py-2 px-3 sm:px-4 border-b border-navy-800">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-slate-300 font-medium truncate">
             <MapPin className="w-3.5 h-3.5 text-brand-400 shrink-0" />
-            <span>{siteConfig.address}</span>
+            <span className="truncate">{siteConfig.address}</span>
           </div>
 
-          <div className="flex items-center gap-1.5 text-[11px] text-slate-300">
+          <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-slate-300 shrink-0">
             <Phone className="w-3.5 h-3.5 text-brand-400 shrink-0" />
             <a href={`tel:${siteConfig.phonePrimary}`} className="text-white hover:text-brand-300 font-bold">
               {siteConfig.phonePrimary}

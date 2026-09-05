@@ -38,14 +38,14 @@ export function ChatWidget() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-40">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40">
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="w-80 sm:w-96 h-[460px] glass-card-dark bg-slate-900/95 rounded-3xl shadow-2xl border border-white/20 flex flex-col overflow-hidden mb-4"
+            className="w-[calc(100vw-2rem)] max-w-[360px] sm:w-96 h-[460px] glass-card-dark bg-slate-900/95 rounded-3xl shadow-2xl border border-white/20 flex flex-col overflow-hidden mb-3 sm:mb-4"
           >
             {/* Chat Header */}
             <div className="p-4 bg-gradient-to-r from-brand-600 to-navy-900 text-white flex items-center justify-between border-b border-white/10">
