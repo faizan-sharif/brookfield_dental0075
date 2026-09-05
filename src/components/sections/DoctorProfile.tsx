@@ -59,13 +59,13 @@ export function DoctorProfile({ onOpenBooking }: DoctorProfileProps) {
                 onClick={onOpenBooking}
                 className="py-3 px-7 btn-navy text-xs font-extrabold rounded-full shadow-md hover:shadow-lg transition-all cursor-pointer"
               >
-                Book with Dr. Chaudhry
+                Book Consultation
               </button>
 
               <a href="tel:88840003434">
                 <button className="py-3 px-7 bg-white border border-slate-200 hover:border-slate-300 text-navy-900 rounded-full text-xs font-extrabold shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-brand-500" />
-                  <span>Call (888) 4000-3434</span>
+                  <Phone className="w-3.5 h-3.5 text-brand-500 fill-current" />
+                  <span>(888) 4000-3434</span>
                 </button>
               </a>
             </div>

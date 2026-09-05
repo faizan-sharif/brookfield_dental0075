@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Calendar, Clock, ArrowRight, Sparkles } from 'lucide-react';
+import { BookOpen, Calendar, Clock, ArrowRight, Sparkles, Phone } from 'lucide-react';
 import { blogData } from '@/data/blog';
 import { BlogCard } from '@/components/ui/BlogCard';
 import { siteConfig } from '@/data/site';
@@ -57,8 +57,9 @@ export default function BlogPage() {
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a href={`tel:${siteConfig.phonePrimary}`}>
-              <button className="py-3 px-8 btn-navy text-xs font-bold shadow-md">
-                Call Us: {siteConfig.phonePrimary}
+              <button className="py-3 px-8 btn-navy text-xs font-bold shadow-md flex items-center justify-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-brand-400 fill-current" />
+                <span>{siteConfig.phonePrimary}</span>
               </button>
             </a>
           </div>

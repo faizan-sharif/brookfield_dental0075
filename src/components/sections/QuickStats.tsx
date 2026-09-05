@@ -28,7 +28,7 @@ export function QuickStats() {
   ];
 
   return (
-    <section className="py-8 bg-ice-100 relative z-20">
+    <section className="py-8 bg-ice-100 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="bg-navy-900 text-white rounded-3xl lg:rounded-full p-6 sm:p-8 shadow-2xl border border-navy-800">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-navy-800">

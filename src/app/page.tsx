@@ -41,7 +41,7 @@ export default function HomePage() {
       <FeaturedImplants onOpenBooking={() => handleOpenBooking({ service: 'Dental Implants' })} />
       <SmileEnhancement onOpenBooking={() => handleOpenBooking({ service: 'Smile Enhancement' })} />
       <TreatmentRange onOpenBooking={(service) => handleOpenBooking({ service: service || 'Dental Implants' })} />
-      <DoctorProfile onOpenBooking={() => handleOpenBooking({ service: 'Consultation', doctor: 'Dr. Maqsood A. Chaudhry' })} />
+      <DoctorProfile onOpenBooking={() => handleOpenBooking({ service: 'Consultation', doctor: 'Dr. Ahmad Hawasli' })} />
       <TeamSection />
       <ResultsSection />
       <GallerySection />

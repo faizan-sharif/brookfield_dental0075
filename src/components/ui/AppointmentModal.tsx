@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, Clock, User, Phone, Mail, CheckCircle, Sparkles, AlertCircle } from 'lucide-react';
+import { X, Calendar, Clock, User, Phone, Mail, CheckCircle, Sparkles, AlertCircle, Stethoscope } from 'lucide-react';
 import { siteConfig } from '@/data/site';
-import { teamData } from '@/data/team';
+import { bookingDoctors } from '@/data/team';
+import { CustomDropdown } from './CustomDropdown';
 import {
   saveBooking,
   isSlotBooked,
@@ -43,7 +44,7 @@ export function AppointmentModal({
     phone: '',
     email: '',
     service: preselectedService || 'Free Oral Consultation',
-    doctor: preselectedDoctor || 'Dr. Maqsood A. Chaudhry',
+    doctor: preselectedDoctor || 'Dr. Ahmad Hawasli',
     preferredDate: preselectedDate || todayStr,
     timeSlot: '10:00 AM',
     notes: '',
@@ -256,44 +257,41 @@ export function AppointmentModal({
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-navy-900 mb-1">
-                        Selected Service
-                      </label>
-                      <select
+                      <CustomDropdown
+                        label="Selected Service"
                         value={formData.service}
-                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-navy-900 focus:outline-none focus:border-brand-500"
-                      >
-                        <option value="Free Oral Consultation">Free Consultation ($150 Value)</option>
-                        <option value="Dental Implants">Dental Implants / All-On-4®</option>
-                        <option value="Zoom Whitening">Philips Zoom! Teeth Whitening</option>
-                        <option value="Lumineers & Veneers">Porcelain Veneers & Lumineers</option>
-                        <option value="Invisalign Aligners">Clear Aligners / ClearCorrect</option>
-                        <option value="Emergency Care">Urgent Emergency Dental Care</option>
-                      </select>
+                        onChange={(val) => setFormData({ ...formData, service: val })}
+                        options={[
+                          { value: 'Free Oral Consultation', label: 'Free Consultation ($150 Value)', subtitle: 'Complimentary new patient exam', icon: Stethoscope },
+                          { value: 'Dental Implants', label: 'Dental Implants / All-On-4®', subtitle: 'Permanent titanium tooth replacement', icon: Stethoscope },
+                          { value: 'Zoom Whitening', label: 'Philips Zoom! Teeth Whitening', subtitle: 'In-office professional smile brightening', icon: Stethoscope },
+                          { value: 'Lumineers & Veneers', label: 'Porcelain Veneers & Lumineers', subtitle: 'Custom aesthetic cosmetic laminates', icon: Stethoscope },
+                          { value: 'Invisalign Aligners', label: 'Clear Aligners / ClearCorrect', subtitle: 'Discreet orthodontic teeth alignment', icon: Stethoscope },
+                          { value: 'Emergency Care', label: 'Urgent Emergency Dental Care', subtitle: 'Same-day severe tooth pain relief', icon: Stethoscope },
+                        ]}
+                        icon={Stethoscope}
+                      />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-navy-900 mb-1">
-                        Selected Doctor
-                      </label>
-                      <select
+                      <CustomDropdown
+                        label="Selected Doctor"
                         value={formData.doctor}
-                        onChange={(e) => handleDoctorChange(e.target.value)}
-                        className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-navy-900 focus:outline-none focus:border-brand-500 cursor-pointer"
-                      >
-                        {teamData.map((doc) => (
-                          <option key={doc.name} value={doc.name}>
-                            {doc.name} ({doc.role})
-                          </option>
-                        ))}
-                      </select>
+                        onChange={handleDoctorChange}
+                        options={bookingDoctors.map((doc) => ({
+                          value: doc.name,
+                          label: doc.name,
+                          subtitle: doc.role,
+                          icon: User,
+                        }))}
+                        icon={User}
+                      />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-navy-900 mb-1">
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1 leading-tight">
                         Selected Date
                       </label>
                       <div className="relative">

@@ -46,3 +46,18 @@ export const teamData: TeamMember[] = [
     image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=800&auto=format&fit=crop',
   },
 ];
+
+export const bookingDoctors = [
+  {
+    name: 'Dr. Ahmad Hawasli',
+    role: 'Board Certified Periodontist',
+  },
+  {
+    name: 'Dr. Ameena Chimata',
+    role: 'Associate Dentist (DMD)',
+  },
+  {
+    name: 'Abdur Rauf Chaudry',
+    role: 'Lead Dental Hygienist (RDH)',
+  },
+];

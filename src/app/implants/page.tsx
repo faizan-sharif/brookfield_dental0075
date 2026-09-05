@@ -31,8 +31,9 @@ export default function ImplantsPage() {
             Schedule Implant Consult
           </Button>
           <a href={`tel:${siteConfig.phonePrimary}`}>
-            <Button variant="glass" className="text-slate-900 font-semibold">
-              Call Hotline {siteConfig.phonePrimary}
+            <Button variant="glass" className="text-slate-900 font-semibold flex items-center justify-center gap-2">
+              <Phone className="w-4 h-4 text-brand-500 fill-current" />
+              <span>{siteConfig.phonePrimary}</span>
             </Button>
           </a>
         </div>

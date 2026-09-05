@@ -8,7 +8,7 @@ import {
   BookingRecord,
   saveBooking,
 } from '@/lib/bookingStore';
-import { teamData } from '@/data/team';
+import { bookingDoctors } from '@/data/team';
 import {
   Search,
   Filter,
@@ -38,7 +38,7 @@ export default function AdminDashboardPage() {
     name: '',
     phone: '',
     email: '',
-    doctor: 'Dr. Maqsood A. Chaudhry',
+    doctor: 'Dr. Ahmad Hawasli',
     date: new Date().toISOString().split('T')[0],
     timeSlot: '10:00 AM',
     service: 'Free Oral Consultation',
@@ -234,7 +234,7 @@ export default function AdminDashboardPage() {
               className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-navy-900 focus:outline-none cursor-pointer"
             >
               <option value="All">All Doctors</option>
-              {teamData.map((d) => (
+              {bookingDoctors.map((d) => (
                 <option key={d.name} value={d.name}>
                   {d.name}
                 </option>
@@ -407,7 +407,7 @@ export default function AdminDashboardPage() {
                     onChange={(e) => setNewManual({ ...newManual, doctor: e.target.value })}
                     className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-navy-900"
                   >
-                    {teamData.map((d) => (
+                    {bookingDoctors.map((d) => (
                       <option key={d.name} value={d.name}>
                         {d.name}
                       </option>

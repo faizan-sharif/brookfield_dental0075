@@ -46,9 +46,11 @@ export function Hero({ onOpenBooking }: HeroProps) {
   }, []);
 
   return (
-    <section className="relative pt-36 sm:pt-40 lg:pt-44 pb-16 md:pb-20 overflow-hidden bg-gradient-to-b from-ice-100 via-white to-ice-50">
-      {/* Background Orbs */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative pt-36 sm:pt-40 lg:pt-44 pb-20 md:pb-24 bg-gradient-to-b from-ice-100 via-white to-ice-50 z-20">
+      {/* Background Orbs (isolated overflow-hidden so floating dropdowns never get clipped) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl" />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-12">
@@ -74,8 +76,9 @@ export function Hero({ onOpenBooking }: HeroProps) {
               </button>
 
               <a href={`tel:${siteConfig.phonePrimary}`} className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto py-3.5 px-8 bg-white border border-slate-200 text-navy-900 rounded-full font-bold text-sm shadow-sm hover:bg-slate-50 transition-colors">
-                  Call {siteConfig.phonePrimary}
+                <button className="w-full sm:w-auto py-3.5 px-8 bg-white border border-slate-200 text-navy-900 rounded-full font-bold text-sm shadow-sm hover:bg-slate-50 transition-colors flex items-center justify-center gap-2">
+                  <Phone className="w-4 h-4 text-brand-500 fill-current" />
+                  <span>{siteConfig.phonePrimary}</span>
                 </button>
               </a>
             </div>
